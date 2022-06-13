@@ -24,7 +24,6 @@
         <thead>
             <tr>
                 <th>Tên Series</th>
-                <th>Tiêu đề bài viết</th>
                 <th>Thao Tác</th>
             </tr>
         </thead>
@@ -33,14 +32,6 @@
             <tbody>
                 <tr>
                     <td>@item.seriesName</td>
-                    @if (item.Post.post_title.Length > 60)
-                    {
-                        <td>@item.Post.post_title.Substring(0, 60) ...</td>
-                    }
-                    else
-                    {
-                        <td>@item.Post.post_title</td>
-                    }
                     <td>
                         <a href="/Series/ViewUpdate?id=@item.seriesID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-pen-square"></i></a>
                         <a href="/Series/Delete?id=@item.seriesID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>

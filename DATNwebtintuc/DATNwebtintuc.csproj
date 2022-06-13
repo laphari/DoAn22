@@ -127,16 +127,29 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SeriesController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MahoaMD5\Mahoapass.cs" />
-    <Compile Include="Migrations\202205270407201_init.cs" />
-    <Compile Include="Migrations\202205270407201_init.Designer.cs">
-      <DependentUpon>202205270407201_init.cs</DependentUpon>
+    <Compile Include="Migrations\202205271440497_init.cs" />
+    <Compile Include="Migrations\202205271440497_init.Designer.cs">
+      <DependentUpon>202205271440497_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206130720465_ad.cs" />
+    <Compile Include="Migrations\202206130720465_ad.Designer.cs">
+      <DependentUpon>202206130720465_ad.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelEntity\Account.cs" />
+    <Compile Include="Models\ModelEntity\Advertisement.cs" />
     <Compile Include="Models\ModelEntity\Category.cs" />
     <Compile Include="Models\ModelEntity\DATNwebtintuc.cs" />
     <Compile Include="Models\ModelEntity\Maihelper.cs" />
@@ -144,6 +157,7 @@
     <Compile Include="Models\ModelEntity\Series.cs" />
     <Compile Include="Models\ModelEntity\StickyPosts.cs" />
     <Compile Include="Models\ModelEntity\Tags.cs" />
+    <Compile Include="Models\ModelRequest\AdvertisementRequest.cs" />
     <Compile Include="Models\ModelRequest\CategoryRequest.cs" />
     <Compile Include="Models\ModelRequest\ChangePasswordRequest.cs" />
     <Compile Include="Models\ModelRequest\LoginRequest.cs" />
@@ -153,6 +167,7 @@
     <Compile Include="Models\ModelRequest\SeriesRequest.cs" />
     <Compile Include="Models\ModelRequest\TagsRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator\AdvertisementRequest.cs" />
     <Compile Include="Validator\CategoryRequest.cs" />
     <Compile Include="Validator\ChangePasswordRequest.cs" />
     <Compile Include="Validator\LoginRequest.cs" />
@@ -163,6 +178,8 @@
     <Compile Include="Validator\TagsRequest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\DATNwebtintuc.dll" />
+    <Content Include="bin\DATNwebtintuc.pdb" />
     <Content Include="Content\AdminLTE\dist\css\adminlte.css" />
     <Content Include="Content\AdminLTE\dist\css\adminlte.min.css" />
     <Content Include="Content\AdminLTE\dist\css\alt\adminlte.components.css" />
@@ -2046,6 +2063,14 @@
     <Content Include="Content\AdminLTE\plugins\uplot\uPlot.iife.js" />
     <Content Include="Content\AdminLTE\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\AdminLTE\plugins\uplot\uPlot.min.css" />
+    <Content Include="Content\Asset\Css\Csshome.css" />
+    <Content Include="Content\Asset\Css\Home.css" />
+    <Content Include="Content\Asset\Css\homecss.css" />
+    <Content Include="Content\Asset\Css\Layouthome.css" />
+    <Content Include="Content\Asset\Css\Resetcss.css" />
+    <Content Include="Content\Asset\Css\StyleLayout.css" />
+    <Content Include="Content\Asset\Css\ZoomImagesCompoment.css" />
+    <Content Include="Content\Asset\Javascript\ZoomImagesCompoment.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2552,6 +2577,43 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Changepassword.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Resetpass.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Search.cshtml" />
+    <Content Include="Views\Category\Viewcreate.cshtml" />
+    <Content Include="Views\Category\Viewupdate.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Search.cshtml" />
+    <Content Include="Views\Post\Viewcreate.cshtml" />
+    <Content Include="Views\Post\Viewupdate.cshtml" />
+    <Content Include="Views\Series\Index.cshtml" />
+    <Content Include="Views\Series\Search.cshtml" />
+    <Content Include="Views\Series\Viewcreate.cshtml" />
+    <Content Include="Views\Series\Viewupdate.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_AdminLTE3.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Tags\Index.cshtml" />
+    <Content Include="Views\Tags\Search.cshtml" />
+    <Content Include="Views\Tags\Viewcreate.cshtml" />
+    <Content Include="Views\Tags\Viewupdate.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage2.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\User\Theme.cshtml" />
+    <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Advertisement\Viewcreate.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2574,8 +2636,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205270407201_init.resx">
-      <DependentUpon>202205270407201_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205271440497_init.resx">
+      <DependentUpon>202205271440497_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206130720465_ad.resx">
+      <DependentUpon>202206130720465_ad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

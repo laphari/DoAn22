@@ -54,11 +54,11 @@ namespace DATNwebtintuc.Controllers
         public ActionResult Viewcreate() 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
-            ViewData["selectseries"] = data.Seriess.ToList();
+            ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();
             return View();
         }
         [ValidateInput(false)]
-        public ActionResult Create(PostRequest item , string IDSeries) 
+        public ActionResult Create(PostRequest item , string seriesID) 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
             ViewData["selectseries"] = data.Seriess.ToList();
@@ -73,67 +73,144 @@ namespace DATNwebtintuc.Controllers
             }
             else
             {
-
-                var entitypost = new Post();
-                entitypost.post_review = item.post_review;
-                entitypost.post_content = item.post_content;
-                entitypost.post_slug = item.post_slug;
-                entitypost.post_tag = item.post_tag;
-                entitypost.IDcategory = item.IDcategory;
-                entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                entitypost.post_title = item.post_title;
-                entitypost.create_date = item.create_date;
-                data.Posts.Add(entitypost);
-                data.SaveChanges();
-                var FindIdSeries = data.Seriess.Find(IDSeries);
-                FindIdSeries.post_id = entitypost.post_id;
-                data.Entry(FindIdSeries).State = EntityState.Modified;
-                data.SaveChanges();
+                var entitypost = new Post();// -> tạo ra đối tượng -> có 1 id => guid 
+                if(seriesID != "") // th này có chọn seri  
+                {
+                    // check xem post_id có tồng tại seri chư
+                    var FindIdSeries = data.Seriess.Find(seriesID);//gui cai seriesid len de tim kie
+                    // nếu đã có rồi 
+                    if (FindIdSeries.post_id != null)
+                    {
+                        // thì ko tạo bài và trả ra message 
+                        ViewData["sentmessseries"] = "The post already exists";
+                        return View("Viewcreate");
+                    }
+                    else // th chưa có  
+                    {
+                        //
+                        entitypost.post_review = item.post_review;
+                        entitypost.post_content = item.post_content;
+                        entitypost.post_slug = item.post_slug;
+                        entitypost.post_tag = item.post_tag;
+                        entitypost.IDcategory = item.IDcategory;
+                        entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                        entitypost.post_title = item.post_title;
+                        entitypost.create_date = item.create_date;
+                        data.Posts.Add(entitypost);
+                        FindIdSeries.post_id = entitypost.post_id;// gan lai
+                        data.Entry(FindIdSeries).State = EntityState.Modified;
+                        data.SaveChanges(); //xử lý 2 vvd ( gán giá trị lại cho nhau và update cái serri)
+                    }
+                }
+                else // th ng ta ko chọn seri 
+                {
+                    entitypost.post_review = item.post_review;
+                    entitypost.post_content = item.post_content;
+                    entitypost.post_slug = item.post_slug;
+                    entitypost.post_tag = item.post_tag;
+                    entitypost.IDcategory = item.IDcategory;
+                    entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                    entitypost.post_title = item.post_title;
+                    entitypost.create_date = item.create_date;
+                    data.Posts.Add(entitypost);
+                    data.SaveChanges();
+                    // chỉ cho ng ta tạo bài viết 
+                }
                 return RedirectToAction("Index", new { create = true });
             }
         }
         [ValidateInput(false)]
-        public ActionResult Viewupdate(string id) 
+        public ActionResult Viewupdate(string id) //dau vao la id 
         {
-            var update = data.Posts.Find(id);
+            var update = data.Posts.Find(id);// dau du lieu o trong bang post
             ViewData["selectcategory"] = data.Categories.ToList();
-            return View(update);
+           
+            ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();//lay ra danh sach ma series dc phep gan cho bai post 
+            var resultidseries = data.Seriess.Where(x => x.post_id == id).FirstOrDefault();// lay ra series ma chua id cua bai post can update
+            if(resultidseries != null) 
+            {
+                ViewData["selectseriesid"] = resultidseries;
+            }
+            return View(update);// dau ra la mot object
         }
         [ValidateInput(false)]
-        public ActionResult Update(PostRequest item) 
+        public ActionResult Update(PostRequest item, string seriesID) 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
+            ViewData["selectseries"] = data.Seriess.ToList();
             PostRequestValidator validator = new PostRequestValidator();
             var result = validator.Validate(item);
             if (!result.IsValid)
             {
                 {
                     ViewData["checkvalidatepostupdate"] = (result.Errors);
-                    return View("Viewcreate");
+                    return View("Viewupdate");
                 }
             }
             else 
             {
                 var entitypost = new Post();
-                entitypost.post_id = item.post_id;
-                entitypost.post_review = item.post_review;
-                entitypost.post_content = item.post_content;
-                entitypost.post_slug = item.post_slug;
-                entitypost.post_tag = item.post_tag;
-                entitypost.IDcategory = item.IDcategory;
-                entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                entitypost.post_title = item.post_title;
-                entitypost.create_date = item.create_date;
-                entitypost.edit_date = item.edit_date;
-                data.Entry(entitypost).State = EntityState.Modified;
-                data.SaveChanges();
-                return RedirectToAction("Index",new { update = true});
+                if(seriesID != "") 
+                {
+                    entitypost.post_id = item.post_id;
+                    entitypost.post_review = item.post_review;
+                    entitypost.post_content = item.post_content;
+                    entitypost.post_slug = item.post_slug;
+                    entitypost.post_tag = item.post_tag;
+                    entitypost.IDcategory = item.IDcategory;
+                    entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                    entitypost.post_title = item.post_title;
+                    entitypost.create_date = item.create_date;
+                    entitypost.edit_date = item.edit_date;
+                    data.Entry(entitypost).State = EntityState.Modified;
+                    var Findseries = data.Seriess.Where(x => x.post_id == item.post_id).FirstOrDefault();// đối cũ => id post 
+                    data.Seriess.Remove(Findseries);
+                    var seriUpdate = data.Seriess.Where(x => x.seriesID == seriesID).FirstOrDefault();
+                    if (seriUpdate != null)
+                    {
+                        seriUpdate.post_id = entitypost.post_id;
+                        data.Entry(seriUpdate).State = EntityState.Modified;
+                    }
+                    data.SaveChanges();
+                    
+                }
+                else 
+                {
+                    entitypost.post_id = item.post_id;
+                    entitypost.post_review = item.post_review;
+                    entitypost.post_content = item.post_content;
+                    entitypost.post_slug = item.post_slug;
+                    entitypost.post_tag = item.post_tag;
+                    entitypost.IDcategory = item.IDcategory;
+                    entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                    entitypost.post_title = item.post_title;
+                    entitypost.create_date = item.create_date;
+                    entitypost.edit_date = item.edit_date;
+                    data.Entry(entitypost).State = EntityState.Modified;
+                    data.SaveChanges();
+                }
+                return RedirectToAction("Index", new { update = true });
             }
         }
-        public ActionResult Delete(string id) 
+        public ActionResult Delete(string idPost)
         {
-            var delete = data.Posts.Find(id);
-            data.Posts.Remove(delete);
+            // find idSeri qua idPost 
+            var postResult = data.Posts.Find(idPost); // => return 1 object post 
+
+            // post object contain id_seri
+            if(postResult != null)
+            {
+                
+                var seriResult = data.Seriess.Where(x=> x.post_id == postResult.post_id).FirstOrDefault();
+                // nếu seriResult có giá trị => xóa bthg
+                // nếu ko có giá trị => lấy gì mà xóa 
+                if(seriResult != null) 
+                {
+                    data.Seriess.Remove(seriResult);
+                    data.SaveChanges();
+                }
+            }
+            data.Posts.Remove(postResult);
             data.SaveChanges();
             return RedirectToAction("Index", new { delete = true });
         }

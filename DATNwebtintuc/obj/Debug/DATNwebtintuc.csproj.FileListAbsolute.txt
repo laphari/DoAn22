@@ -83,3 +83,4 @@ C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\bin\FluentValidation.xm
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.csproj.AssemblyReference.cache
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.init.resources
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.csproj.GenerateResource.cache
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.ad.resources

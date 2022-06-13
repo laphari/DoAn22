@@ -10,12 +10,12 @@ namespace DATNwebtintuc.Models.ModelEntity
     {
         public Series() 
         {
-
+            this.seriesID = Guid.NewGuid().ToString(); 
         }
         [Key]
-        public int seriesID { get; set; }
+        public string seriesID { get; set; }
         public string seriesName { get; set; }
-        public int post_id { get; set; }
+        public string post_id { get; set; }
         public virtual Post Post { get; set; }
     }
 }

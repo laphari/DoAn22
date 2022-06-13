@@ -1,0 +1,329 @@
+﻿body {
+}
+body {
+}
+
+.tieude {
+    background-color: #111111;
+    width: 100%;
+    height: 35px;
+}
+
+.thoitiet {
+    display: flex;
+}
+
+.thoitietdammay > i {
+    color: white;
+    margin-top: 9px;
+    margin-left: 150px;
+}
+
+.thoitietthongtin > p {
+    color: white;
+    margin-top: 11px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nhietdo {
+    color: white
+}
+
+.thoitietngaythang > p {
+    color: white;
+    margin-top: 11px;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.logo1 > i {
+    color: white;
+    margin-top: 9px;
+    margin-left: 485px;
+    font-size: 16px;
+}
+
+.logo2 > i {
+    color: white;
+    margin-top: 9px;
+    margin-left: 30px;
+    font-size: 16px;
+}
+
+.tieude2 {
+    display: flex;
+}
+
+.imglogo > img {
+    width: 600px;
+    height: 270px;
+}
+
+.imggif {
+    background-color: #1D8FBD;
+    width: 700px;
+    height: 270px;
+}
+
+.tieude3 {
+    background-color: #3399CC;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    margin-top: -3px
+}
+
+.theloai2 {
+    margin-left: 50px;
+    margin-top: 20px
+}
+
+    .theloai2 > a {
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+.xahoi {
+    margin-left: 62px;
+    margin-top: 20px
+}
+
+    .xahoi > a {
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+.ip-search {
+    width: 215px;
+    border-color: white;
+    outline: none;
+    margin-top: 15px;
+    margin-left: 50px
+}
+
+.div-bt {
+    margin-left: 233px;
+    margin-top: -21px;
+}
+
+    .div-bt > button {
+        background-color: white;
+        border-color: white;
+        outline: none;
+        height: 22px;
+    }
+
+.tieudiem {
+    display: flex;
+}
+
+.imgcontentt > img {
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 650px;
+    height: 300px;
+}
+
+.chutinmoi {
+    margin-top: 37px;
+    margin-left: 50px;
+}
+
+    .chutinmoi > p {
+        font-size: 21px;
+        color: #3399CC;
+    }
+
+.mau {
+    width: 35px;
+    background-color: #1D8FBD;
+    height: 3px;
+    margin-left: 52px;
+}
+
+.chuduoianhcontent {
+    margin-left: 54px;
+    margin-top: -49px;
+    width: 650px;
+}
+
+    .chuduoianhcontent > a {
+        font-size: 22px;
+        color: white;
+        text-decoration:none;
+    }
+.chuduoianhcontent>a:hover
+{
+    color:gainsboro;
+}
+.btn-content {
+    margin-top: 22px;
+    margin-left: 50px;
+}
+
+.content2 {
+    display: flex;
+}
+
+.imgcontent2 {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+    .imgcontent2 > img {
+        width: 232px;
+        height: 143px;
+    }
+
+.noidungchu {
+    margin-left: 12px;
+    width: 250px;
+    margin-top: 10px;
+}
+
+    .noidungchu > a {
+        font-size: 16px;
+        text-decoration:none;
+        color:black;
+    }
+.noidungchu>a:hover
+{
+    color:blue;
+}
+.luotxem {
+    display: flex;
+}
+
+.luotxemmat {
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+    .luotxemmat > i {
+        font-size: 14px;
+        color: brown;
+    }
+
+.luotxemso {
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+    .luotxemso > p {
+        font-size: 14px;
+        color: brown;
+    }
+
+.ngaytao {
+    display: flex;
+}
+
+.ngaytaokitu {
+    margin-left: 13px;
+    margin-top: 10px;
+}
+
+    .ngaytaokitu > i {
+        font-size: 15px;
+        color: gray;
+    }
+
+.ngaytaochu {
+    margin-left: 12px;
+    margin-top: 12px;
+}
+
+    .ngaytaochu > p {
+        font-size: 14px;
+        color: gray;
+    }
+
+.thoisu {
+    display: flex;
+}
+
+.imgthoisu1
+{
+    margin-left: 50px;
+    margin-top:10px;
+}
+.imgthoisu1>img
+{
+    width:355px;
+    height:220px;
+}
+.chuthoisu1 {
+    margin-left: 62px;
+    margin-top: 10px;
+    width: 325px;
+}
+.chuthoisu1 >a
+{
+    font-size:17px;
+    text-decoration:none;
+    color:black;
+}
+.chuthoisu1>a:hover
+{
+    color: red;
+}
+.thoisutd
+{
+    display:flex;
+}
+.anhtieudiem 
+{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.anhtieudiemlink 
+{
+    width: 355px;
+    height: 220px;
+}
+.chutieudiem 
+{
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 355px;
+}
+.chutieudiem > a 
+{
+    font-size: 17px;
+    text-decoration: none;
+    color: black;
+}
+.chutieudiem>a:hover
+{
+    color:blue;
+}
+.kitutieudiemngaytao
+{
+    display:flex;
+    margin-left:50px;
+    margin-top:13px;
+}
+.kitutieudiemngaytaokitu>i
+{
+    color:darkgrey;
+    font-size:14px;
+}
+.kitutieudiemngaytaochu>p
+{
+    font-size:14px;
+    margin-top:3px;
+    margin-left:7px;
+    color:darkgrey;
+}
+.tieudiemcon
+{
+    display:flex;
+}
+.tieudiemconanh
+{
+    margin-left: 50px;
+    margin-top: 10px;
+}

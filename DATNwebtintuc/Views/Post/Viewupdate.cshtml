@@ -3,10 +3,12 @@
     ViewBag.Title = "Viewupdate";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkvalidatepostupdate"] as List<FluentValidation.Results.ValidationFailure>;
+    var objectUpdateSeri = ViewData["selectseriesid"] as DATNwebtintuc.Models.ModelEntity.Series;
 }
 
 @if (validate != null)
 {
+   
     foreach (var item in validate)
     {
         <div style="position: absolute; top: 110px; right: 0;">
@@ -24,6 +26,7 @@
         </div>
     }
 }
+
 <form action="/Post/Update" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="formGroupExampleInput" readonly hidden>Mã bài viết</label>
@@ -61,12 +64,28 @@
             }
         </select>
         <br />
+        <label>Series</label>
+        <br />
+        <select name="seriesID" class="form-control">
+            <option value="">-------Lựa chọn series-------</option>
+            @if (@objectUpdateSeri != null)
+            {
+                <option value="@objectUpdateSeri.seriesID" selected>@objectUpdateSeri.seriesName</option>
+            }
+
+            @foreach (var item in @ViewData["selectseries"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
+            {
+                <option @(item.seriesID == ViewData["selectseriesid"] ? "selected" : "") value="@item.seriesID">@item.seriesName</option>
+                @*<option value="@item.seriesID">@item.seriesName</option>*@
+            }
+        </select>
+        <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
         <input type="datetime" class="form-control" id="formGroupExampleInput" name="create_date" readonly value="@Model.create_date">
         <br />
         <label for="formGroupExampleInput">Ngày sửa</label>
         <input type="date" class="form-control" id="formGroupExampleInput" name="edit_date">
-        <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Tạo</button>
+        <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Sửa</button>
     </div>
 </form>
 <script src="~/Content/Ckeditor/ckeditor/ckeditor.js">

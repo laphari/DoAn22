@@ -15,5 +15,6 @@ namespace DATNwebtintuc.Models.ModelEntity
         public virtual DbSet<Tags> Tagss { get; set; }
         public virtual DbSet<StickyPosts> StickyPostss { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Advertisement> Advertisements { get; set;}
     }
 }

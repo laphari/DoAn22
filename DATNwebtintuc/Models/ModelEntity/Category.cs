@@ -11,10 +11,10 @@ namespace DATNwebtintuc.Models.ModelEntity
         public Category()
         {
             TBL_Post = new HashSet<Post>();
-
+            this.IDcategory = Guid.NewGuid().ToString();
         }
         [Key]
-        public int IDcategory  { get; set; } 
+        public string IDcategory  { get; set; } 
         public string namecategory { get; set; }
         public virtual ICollection<Post> TBL_Post { get; set; }
     }

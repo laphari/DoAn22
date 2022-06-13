@@ -13,9 +13,10 @@ namespace DATNwebtintuc.Models.ModelEntity
             TBL_Tags = new HashSet<Tags>();
             TBL_StickyPosts = new HashSet<StickyPosts>();
             Tbl_Series = new HashSet<Series>();
+            this.post_id = Guid.NewGuid().ToString();
         }
         [Key]
-        public int post_id { get; set; }
+        public string post_id { get; set; }
         public string post_title { get; set; } // tieu de bai dang
         public string post_slug { get; set; }//  them slug vao cho url
         public string post_teaser { get; set; }// la 1 cai anh nho de quang cao bai dang day
@@ -28,9 +29,9 @@ namespace DATNwebtintuc.Models.ModelEntity
         public int Rated { get; set; }// so luong xem
         public string AvatarImage { get; set; } //anh bai dang
         public bool status { get; set; } // trang thai bai dang
-        public int? IDaccount { get; set; }
+        public string IDcategory { get; set; }
+        public string IDaccount { get; set; }
         public virtual Account Account { get; set; }
-        public int? IDcategory { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Tags> TBL_Tags { get; set; }
         public virtual ICollection<StickyPosts> TBL_StickyPosts { get; set; }

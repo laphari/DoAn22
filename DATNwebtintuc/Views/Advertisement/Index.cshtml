@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DATNwebtintuc.Models.ModelEntity.Advertisement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+}
+
+
+<div class="header">
+    <div>
+        <a href="/Advertisement/Viewcreate" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-pen-to-square"></i></a>
+    </div>
+    <div class="search-chia">
+        <form action="/Category/Search" method="post">
+            <div class="input-ip">
+                <input type="search" name="search" placeholder="Tìm Kiếm" />
+            </div>
+            <div class="btn-ip">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container mt-3">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Link Ảnh</th>
+                <th>Kiểu Ảnh</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.linkAdvertisement</td>
+                    <td>@item.typeAdvertisement</td>
+                    <td>
+                        <a href="/Advertisement/Remove?id=@item.idAdvertisement" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                        @*<a href="/Category/ViewUpdate?id=@item.IDcategory" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-pen-square"></i></a>
+        <a href="/Category/Delete?id=@item.IDcategory" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>*@
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

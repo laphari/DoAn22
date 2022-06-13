@@ -8,10 +8,14 @@ namespace DATNwebtintuc.Models.ModelEntity
 {
     public class Tags
     {
+        public Tags()
+        {
+            this.TagID = Guid.NewGuid().ToString();
+        }
         [Key]
-        public int TagID { get; set; }
+        public string TagID { get; set; }
         public string TagName { get; set; }
-        public int post_id { get; set; }
+        public string post_id { get; set; }
         public virtual Post Post { get; set; }
     }
 }

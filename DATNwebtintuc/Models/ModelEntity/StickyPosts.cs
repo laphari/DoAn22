@@ -10,10 +10,10 @@ namespace DATNwebtintuc.Models.ModelEntity
     {
         public StickyPosts()
         {
-
+            idStickyPosts = Guid.NewGuid().ToString();
         }
         [Key]
-        public int id { get; set; }
+        public string idStickyPosts { get; set; }
         public int priority { get; set; }
         public string post_id { get; set; }
         public virtual Post Post { get; set; }

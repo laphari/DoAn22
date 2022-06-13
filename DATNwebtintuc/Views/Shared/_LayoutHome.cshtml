@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    @Styles.Render("~/Content/Asset/Css/Resetcss.css")
+    @Styles.Render("~/Content/Asset/Css/homecss.css")
+    @*@Styles.Render("~/Content/Asset/Css/ZoomImagesCompoment.css")
+    <script type="text/javascript" src="@Url.Content("~/Content/Asset/javasript/ZoomImagesCompoment.js")"></script>
+    @RenderSection("JavaScript", required: false)*@
+
+</head>
+<body>
+    <div class="tieude">
+        <div class="thoitiet">
+            <div class="thoitietdammay">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+            <div class="thoitietthongtin">
+                <p>31 <i class="fas fa-temperature-low nhietdo"></i> HA NOI VIET NAM</p>
+            </div>
+            <div class="thoitietngaythang">
+                <p>@DateTime.Now</p>
+            </div>
+            <div class="logo1">
+                <i class="fab fa-facebook"></i>
+            </div>
+            <div class="logo2">
+                <i class="fab fa-google-plus-g"></i>
+            </div>
+            <div class="logo2">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="logo2">
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tieude2">
+        <div class="imglogo">
+            <img src="~/Uploadimg/logoweb.png" />
+        </div>
+        <div class="imggif">
+
+        </div>
+    </div>
+    <div class="tieude3">
+        <div class="xahoi">
+            <a href="/Home/Categories">XÃ HỘI</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">PHÁP LUẬT</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">THẾ GIỚI</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">THỜI SỰ</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">KINH DOANH</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">ĐỜI SỐNG</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">GIẢI TRÍ</a>
+        </div>
+        <div class="theloai2">
+            <a href="d">XE</a>
+        </div>
+        <div class="searchbaiviet">
+            <form>
+                <div class="div-ip">
+                    <input class="ip-search" type="search" placeholder="Tìm Kiếm" />
+                </div>
+                <div class="div-bt">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <div class="footer">
+        <div class="footerimg">
+            <div class="imgfooter">
+                <img src="~/Uploadimg/logoweb.png" />
+            </div>
+        </div>
+        <div class="footeraboutus">
+            <div class="chuaboutus">
+                <p>VỀ CHÚNG TÔI</p>
+            </div>
+
+            <div>
+                <div class="diachi">
+                    <div class="chudiachi">
+                        <p>Địa chỉ <i class="fa-solid fa-location-pin kitudiachi"></i> Ngọc Thụy Long Biên Hà Nội</p>
+                    </div>
+                </div>
+                <div class="diachi">
+                    <div class="chudiachi">
+                        <p>Điện thoại <i class="fa-solid fa-phone kitudiachi"></i> 0868095305</p>
+                    </div>
+                </div>
+                <div class="diachi">
+                    <div class="chudiachi">
+                        <p>Email <i class="fa-solid fa-envelope kitudiachi"></i> 1821080034@student.humg.edu.vn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footerfollow">
+            <div class="chufollow">
+                <p>THEO DÕI CHÚNG TÔI</p>
+            </div>
+            <div class="kitufollow">
+                <div class="kitufollow1">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="kitufollow2">
+                    <i class="fab fa-google-plus-g"></i>
+                </div>
+                <div class="kitufollow2">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="kitufollow2">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chubanquyen">
+        <div class="kituchubanquyen">
+            <p>&#169;</p>
+        </div>
+        <div class="chubanquyenweb">
+            <p>Bản quyền thuộc về công ty thiết kế website Van Lap Media</p>
+        </div>
+        @*<p>&#169; Bản quyền thuộc về công ty thiết kế website Van Lap Media</p>*@
+    </div>
+</body>
+</html>
+

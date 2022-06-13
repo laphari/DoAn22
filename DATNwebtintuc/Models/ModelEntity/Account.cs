@@ -11,10 +11,10 @@ namespace DATNwebtintuc.Models.ModelEntity
         public Account()
         {
             TBL_Post = new HashSet<Post>();
-
+            this.IDaccount = Guid.NewGuid().ToString();
         }
         [Key]
-        public int IDaccount { get; set; }
+        public string IDaccount { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string password { get; set; }

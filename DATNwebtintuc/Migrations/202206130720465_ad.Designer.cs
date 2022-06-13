@@ -5,13 +5,13 @@ namespace DATNwebtintuc.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class init : IMigrationMetadata
+    public sealed partial class ad : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ad));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205270407201_init"; }
+            get { return "202206130720465_ad"; }
         }
         
         string IMigrationMetadata.Source

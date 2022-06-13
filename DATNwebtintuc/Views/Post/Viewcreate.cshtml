@@ -4,6 +4,7 @@
     ViewBag.Title = "Viewcreate";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkvalidatepost"] as List<FluentValidation.Results.ValidationFailure>;
+    var validate1 = ViewData["sentmessseries"];
 }
 
 
@@ -21,6 +22,25 @@
                 </div>
                 <div class="toast-body bg-light">
                     @item.ErrorMessage
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@if (validate1 != null)
+{
+    {
+        <div style="position: absolute; top: 110px; right: 0;">
+            <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-warning">
+                    <img src="https://img.lovepik.com/element/40120/8183.png_860.png" height="20px" width="30px" class="rounded mr-2" alt="...">
+                    <strong class="mr-auto">Warning</strong>
+                    <span aria-hidden="true">&times;</span>
+
+                </div>
+                <div class="toast-body bg-light">
+                    @validate1
                 </div>
             </div>
         </div>
@@ -63,7 +83,7 @@
         <label>Series</label>
         <br />
         <select name="seriesID" class="form-control">
-            <option selected>-------Lựa chọn series-------</option>
+            <option value="" selected>-------Lựa chọn series-------</option>
             @foreach (var item in @ViewData["selectseries"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
             {
                 <option value="@item.seriesID">@item.seriesName</option>

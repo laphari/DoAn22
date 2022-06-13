@@ -37,9 +37,9 @@
         {
             <tbody>
                 <tr>
-                    @if (item.post_title.Length > 60)
+                    @if (item.post_title.Length > 40)
                     {
-                        <td>@item.post_title.Substring(0, 60) ...</td>
+                        <td>@item.post_title.Substring(0, 40) ...</td>
                     }
                     else
                     {
@@ -51,7 +51,7 @@
                     <td>
                         <a href="/Post/Viewupdate?id=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-pen-square"></i></a>
                         <a href="/Post/Detail?id=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info-circle"></i></a>
-                        <a href="/Post/Delete?id=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                        <a href="/Post/Delete?idPost=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
 
                     </td>
                 </tr>
