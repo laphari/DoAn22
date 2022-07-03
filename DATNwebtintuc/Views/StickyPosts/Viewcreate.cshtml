@@ -1,0 +1,13 @@
+﻿@model DATNwebtintuc.Models.ModelEntity.StickyPosts
+@{
+    ViewBag.Title = "Viewcreate";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+}
+
+<form action="/StickyPosts/Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Ưu tiên</label>
+        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="" name="priority">
+        <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Tạo</button>
+    </div>
+</form>

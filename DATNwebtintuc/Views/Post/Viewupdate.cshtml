@@ -3,10 +3,11 @@
     ViewBag.Title = "Viewupdate";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkvalidatepostupdate"] as List<FluentValidation.Results.ValidationFailure>;
-    var objectUpdateSeri = ViewData["selectseriesid"] as DATNwebtintuc.Models.ModelEntity.Series;
+    var objectUpdateSeri = ViewData["selectseries"] as DATNwebtintuc.Models.ModelEntity.Series;
+    var objectUpdatestickypost = ViewData["selectstickypost"] as DATNwebtintuc.Models.ModelEntity.StickyPosts;
 }
 
-@if (validate != null)
+@if(validate != null)
 {
    
     foreach (var item in validate)
@@ -42,7 +43,8 @@
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nhập hashtag bài viết" name="post_tag" value="@Model.post_tag">
         <br />
         <label for="formGroupExampleInput">Ảnh mô tả</label>
-        <input type="file" class="form-control" id="formGroupExampleInput" name="post_teaser">
+        <input type="file" class="form-control" id="formGroupExampleInput" name="post_teaser"  id="FileUpload">
+        <input type="text" name="post_teaser" value="@Model.post_teaser" hidden readonly />
         <br />
         <label for="formGroupExampleInput">Review bài viết</label>
         <textarea name="post_review">
@@ -67,24 +69,35 @@
         <label>Series</label>
         <br />
         <select name="seriesID" class="form-control">
-            <option value="">-------Lựa chọn series-------</option>
-            @if (@objectUpdateSeri != null)
+            @if(objectUpdateSeri != null) 
             {
                 <option value="@objectUpdateSeri.seriesID" selected>@objectUpdateSeri.seriesName</option>
             }
-
-            @foreach (var item in @ViewData["selectseries"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
+            @foreach(var item in @ViewData["selectseriesed"] as List<DATNwebtintuc.Models.ModelEntity.Series>) 
             {
-                <option @(item.seriesID == ViewData["selectseriesid"] ? "selected" : "") value="@item.seriesID">@item.seriesName</option>
-                @*<option value="@item.seriesID">@item.seriesName</option>*@
+                <option value="@item.seriesID">@item.seriesName</option>
+            }
+        </select>
+        <br />
+        <label>Ưu tiên</label>
+        <br />
+        <select name="idStickyPosts" class="form-control">
+            <option value="">-------Lựa chọn ưu tiên-------</option>
+            @if (objectUpdatestickypost != null)
+            {
+                <option value="@objectUpdatestickypost.idStickyPosts" selected>@objectUpdatestickypost.priority</option>
+            }
+            @foreach (var item in @ViewData["selectstickyposted"] as List<DATNwebtintuc.Models.ModelEntity.StickyPosts>)
+            {
+                <option value="@item.idStickyPosts">@item.priority</option>
             }
         </select>
         <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
-        <input type="datetime" class="form-control" id="formGroupExampleInput" name="create_date" readonly value="@Model.create_date">
+        <input type="datetime" class="form-control" id="formGroupExampleInput" name="create_date"  value="@Model.create_date" readonly>
         <br />
         <label for="formGroupExampleInput">Ngày sửa</label>
-        <input type="date" class="form-control" id="formGroupExampleInput" name="edit_date">
+        <input type="datetime-local" class="form-control" id="formGroupExampleInput" name="edit_date">
         <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Sửa</button>
     </div>
 </form>
@@ -106,5 +119,6 @@
     const Toast = new bootstrap.Toast(getToast);
     Toast.show();
     Toast._config.delay = 7000;
+
 </script>
 

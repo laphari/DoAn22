@@ -1,11 +1,93 @@
 ﻿@model DATNwebtintuc.Models.ModelEntity.Post
 @{
     ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    var getimgadvertisment = ViewData["advertismentimage"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
+    var getbaivietganday = ViewData["selectpostanddetail"] as List<DATNwebtintuc.Models.ModelEntity.Post>;
 }
 
-<div style="margin-left:30px">
-    @Html.Raw(Model.post_content)
+<div class="trangchudetail">
+    <div class="chutrangchu">
+        <a href="/Home/Index">Trang chủ ></a>
+    </div>
+    <div class="theloaitrangdetail">
+        <p>@Model.Category.namecategory</p>
+    </div>
 </div>
-@Model.Category.namecategory
-@Model.post_id
+
+<div class="post-title-to">
+    <div class="post-title">
+        <h2>"@Model.post_title"</h2>
+    </div>
+    <div class="baivietganday">
+        <div class="chuganday">
+            <div class="chugandayp">
+                <p>Bài viết gần đây</p>
+            </div><div class="chugandayi">
+                <i class="fas fa-book-open"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="time">
+    <div class="time-hn">
+        <p>Bởi HNNEWS</p>
+    </div>
+    <div class="time-ngay">
+        <i class="fa-solid fa-clock"> @Model.create_date</i>
+    </div>
+</div>
+
+<div class="content">
+    <div class="post-content">
+        @Html.Raw(Model.post_content)
+    </div>
+    <div>
+        <div class="baivietgandaytop">
+            @foreach (var item in getbaivietganday)
+            {
+                <div class="baivietganday3">
+                    <div class="baivietgandayimg">
+                        <a href="/Post/Detail?id=@item.post_id"><img class="baivietgandayimglink" src="@item.post_teaser" /></a>
+                    </div>
+                    <div>
+                        <div class="baivietgandaychu">
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title.Substring(0, 14)...</a>
+                        </div>
+                        <div class="baivietgandaynews">
+                            <p>HOT</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="quangcao8">
+            <a href="d"><img class="quangcao8link" src="@getimgadvertisment[5].linkAdvertisement" /></a>
+        </div>
+    </div>
+</div>
+
+<div class="hastag">
+    <div class="hastag1">
+        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
+    </div>
+    <div class="hastag2">
+        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
+    </div>
+    <div class="hastag2">
+        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
+    </div>
+    <div class="hastag2">
+        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
+    </div>
+    <div class="hastag2">
+        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
+    </div>
+</div>
+
+
+
 

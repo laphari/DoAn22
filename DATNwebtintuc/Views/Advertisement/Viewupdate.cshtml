@@ -1,0 +1,29 @@
+﻿@model DATNwebtintuc.Models.ModelEntity.Advertisement
+@{
+    ViewBag.Title = "Viewupdate";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+    ViewData["linkType"] = "";
+
+}
+@if (Model.typeAdvertisement == "Video")
+{
+    <iframe width="355" height="180" src="@Model.linkAdvertisement" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin-left:340px;" allowfullscreen></iframe>      
+    ViewData["linkType"] = "Link Video";
+}
+else
+{
+    <img src="@Model.linkAdvertisement" width="280px" height="200px" style="border-radius:50%;margin-left:370px;" />
+    ViewData["linkType"] = "Link ảnh";
+}
+<form action="/Advertisement/Update" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formGroupExampleInput" hidden>ID Ảnh</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="idAdvertisement" value="@Model.idAdvertisement" hidden readonly>
+        <label for="formGroupExampleInput">@ViewData["linkType"]</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nhập tên link ảnh" name="linkAdvertisement" value="@Model.linkAdvertisement">
+        <label for="formGroupExampleInput">Kiểu files</label>
+        <input type="text" class="form-control" id="formGroupExampleInput"  name="typeAdvertisement" value="@Model.typeAdvertisement" readonly>
+        <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Sửa</button>
+    </div>
+</form>
+

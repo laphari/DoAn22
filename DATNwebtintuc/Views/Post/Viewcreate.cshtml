@@ -4,7 +4,8 @@
     ViewBag.Title = "Viewcreate";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkvalidatepost"] as List<FluentValidation.Results.ValidationFailure>;
-    var validate1 = ViewData["sentmessseries"];
+    var validate1 = ViewData["sentmessseriesandstick"];
+    var checkstickypost = ViewData["createstickypost"] as DATNwebtintuc.Models.ModelEntity.StickyPosts;
 }
 
 
@@ -46,6 +47,8 @@
         </div>
     }
 }
+
+
 <form action="/Post/Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="formGroupExampleInput">Tiêu đề bài viết</label>
@@ -86,12 +89,24 @@
             <option value="" selected>-------Lựa chọn series-------</option>
             @foreach (var item in @ViewData["selectseries"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
             {
+                
                 <option value="@item.seriesID">@item.seriesName</option>
             }
         </select>
         <br />
+        <br />
+        <label>Ưu tiên</label>
+        <br />
+        <select name="idStickyPosts" class="form-control">
+            <option value="" selected>-------Lựa chọn stickpost-------</option>
+            @foreach (var item in @ViewData["selectstickpost"] as List<DATNwebtintuc.Models.ModelEntity.StickyPosts>)
+            {
+                    <option value="@item.idStickyPosts">@item.priority</option>
+            }
+        </select>
+        <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
-        <input type="date" class="form-control" id="formGroupExampleInput" name="create_date">
+        <input type="datetime-local" class="form-control" id="formGroupExampleInput" name="create_date">
 
         <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Tạo</button>
     </div>

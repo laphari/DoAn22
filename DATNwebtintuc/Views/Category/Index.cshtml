@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkdelte"];
+    var totallpagesize = int.Parse(ViewData["totallpage"].ToString());
+
 }
 @if (validate != null)
 {
@@ -88,9 +90,31 @@
         })
     </script>
 }
+
+@if (ViewBag.Messdelete == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Deleted',
+                'Please click here',
+                'success'
+            )
+        })
+    </script>
+}
 <script>
     const getToast = document.getElementById("toast");
     const Toast = new bootstrap.Toast(getToast);
     Toast.show();
     Toast._config.delay = 7000;
 </script>
+
+<ul class="pagination" style="margin-left:45%;margin-top:20px">
+
+    @for (var i = 1; i <= totallpagesize; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/Category/Index?page=@i">@i</a></li>
+    }
+
+</ul>

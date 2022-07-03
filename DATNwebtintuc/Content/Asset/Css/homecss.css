@@ -76,7 +76,7 @@ body {
 }
 
 .theloai2 {
-    margin-left: 50px;
+    margin-left: 63px;
     margin-top: 20px
 }
 
@@ -325,6 +325,7 @@ body {
 
 .tieudiemcon {
     display: flex;
+   
 }
 
 .tieudiemconanh 
@@ -899,4 +900,351 @@ body {
 {
     color:black;
     font-size:12px;
+}
+
+.img-content2-con 
+{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.img-content2-conlink
+{
+    width:310px;
+    height:223px;
+}
+.img-content2-chu 
+{
+    margin-top: -59px;
+    margin-left: 15px;
+    width:305px;
+}
+.img-content2-chu >a
+{
+       color:#00BFFF;
+      font-size: 15px;
+      text-decoration: none;
+}
+.img-content2-chu>a:hover
+{
+     color:	#1E90FF;
+}
+.img-content2
+{
+    display:flex;
+}
+.img-content3 
+{
+    display: flex;
+    margin-top:19px;
+}
+.img-content2-duoi 
+{
+    display: flex;
+}
+.img-content2-duoi-img 
+{
+    margin-left: 60px;
+    margin-top: 45px;
+}
+.img-content2-duoi-img1 
+{
+    margin-left: 20px;
+    margin-top: 45px;
+} 
+.img-content2-duoi-conlink 
+{
+    width:390px;
+    height:250px;
+}
+.img-content2-duoi-chu 
+{
+    margin-left: 74px;
+    margin-top: 10px;
+    width:350px;
+}
+.img-content2-duoi-chu >a
+{
+      color:black;
+      font-size: 17px;
+      text-decoration: none;
+}
+.img-content2-duoi-chu >a:hover
+{
+    color:blue;
+}
+.img-content-duoi-ngay 
+{
+    margin-left: 74px;
+    margin-top: 10px;
+}
+.img-content-duoi-ngay >p
+{
+     color:black;
+    font-size:10px;
+}
+.img-content-duoi-ngay>p:hover
+{
+    color:blue;
+}
+.div-content2-duoi-all
+{
+    display:flex;
+}
+.infor-img 
+{
+    margin-left: 60px;
+    margin-top: 45px;
+}
+.infor-img >img
+{
+    width:260px;
+    height:200px;
+    border-radius:50%;
+}
+.infor-ten 
+{
+    margin-left: 125px;
+    margin-top:10px;
+}
+.infor-ten >p
+{
+      color:black;
+      font-size: 19px;
+}
+.infor-congviec 
+{
+    margin-left: 70px;
+    margin-top: 10px;
+    width:260px;
+}
+.post-title>h2
+{
+    margin-top:20px;
+    margin-left:65px;
+    font-size:33px;
+}
+.post-content 
+{
+    margin-top: 20px;
+    font-size:18px;
+    margin-left:65px;
+}
+.time 
+{
+    display: flex;
+    margin-top: 10px;
+    font-size: 13px;
+    margin-left: 67px;
+}
+.time-hn 
+{
+    color: navy;
+} 
+.time-hn:hover
+{
+    color:black;
+} 
+.time-ngay
+{
+    margin-left:10px;
+}
+.time-ngay>i
+{
+    font-size: 10px;
+    color:blue
+}
+.time-ngay>i:hover
+{
+    color:black;
+}
+.trangchudetail 
+{
+    display: flex;
+}
+.chutrangchu
+{
+    margin-left:60px;
+    margin-top:10px;
+}
+.chutrangchu>a
+{
+    font-size:17px;
+    text-decoration:none;
+    color:darkgrey;
+}
+.chutrangchu>a:hover
+{
+    color:blue;
+}
+.theloaitrangdetail 
+{
+    margin-left: 10px;
+    margin-top: 13px;
+}
+.theloaitrangdetail >p
+{
+    font-size:13px;
+    text-decoration:none;
+    color:darkgrey;
+}
+.theloaitrangdetail >p:hover
+{
+     color:blue;
+}
+.content
+{
+    display:flex;
+}
+.post-content
+{
+    width:810px;
+}
+.post-title 
+{
+    width: 830px;
+}
+.post-title-to
+{
+    display:flex
+}
+.baivietganday 
+{
+    margin-left: 140px;
+    margin-top: 22px;
+}
+.chuganday
+{
+    display:flex;
+    width:230px;
+    height:28px;
+    background-color:black;
+}
+.chugandayi > i 
+{
+    color: white;
+    font-size: 17px;
+    margin-left: 5px;
+    margin-top:8px;
+}
+.chugandayp > p 
+{
+    color: white;
+    font-size: 20px;
+    margin-top:5px;
+    margin-left:38px;
+}
+.noidungganday
+{
+    display:flex;
+    margin-top:10px;
+}
+.noidungganday
+{
+    margin-left:-38px;
+    margin-top:-70px;
+}
+.noidungganday1 
+{
+    margin-left: -38px;
+    margin-top:10px;
+}
+.noidungganday>a
+{
+    width:230px;
+    font-size:18px;
+    text-decoration:none;
+}
+.noidungganday1>a
+{
+    width:230px;
+    font-size:18px;
+    text-decoration:none;
+}
+.noidungganday1>a:hover
+{
+    color:lightblue;
+}
+.noidungganday>a:hover
+{
+    color:lightblue;
+}
+.baivietganday3
+{
+    display: flex;
+    margin-top:70px;
+}
+
+.baivietgandayimglink
+{
+    width:130px;
+    height:90px;
+}
+.baivietgandayimg 
+{
+    margin-left: 95px;
+    margin-top:-40px;
+}
+.baivietgandaychu {
+    margin-left: 10px;
+    margin-top: -40px;
+    width:100px;
+}
+.baivietgandaychu>a
+{
+    font-size:14px;
+    text-decoration:none;
+}
+.baivietgandaygio {
+    width: 180px;
+    margin-left: 10px;
+    margin-top:10px;
+}
+.baivietgandaygio>i
+{
+    font-size:11px;
+}
+.baivietgandaynews 
+{
+    background-color: red;
+    width: 57px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius:50%;
+}
+.baivietgandaynews>p
+{
+    font-size:17px;
+    padding-left:12px;
+    color:white;
+}
+.quangcao8
+{
+    margin-left:95px;
+    margin-top:60px;
+}
+.quangcao8link
+{
+    width:230px;
+    height:350px;
+}
+.hastag
+{
+    display:flex;
+    margin-left:63px;
+    margin-top:50px;
+}
+.hastag1>a
+{
+    font-size:13px;
+}
+.hastag2
+{
+    margin-left:88px;
+}
+.hastag2 > a {
+    font-size: 13px;
+}
+.tieudiemtdandqc
+{
+    display:flex
 }

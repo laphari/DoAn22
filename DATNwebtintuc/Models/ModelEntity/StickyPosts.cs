@@ -14,8 +14,8 @@ namespace DATNwebtintuc.Models.ModelEntity
         }
         [Key]
         public string idStickyPosts { get; set; }
-        public int priority { get; set; }
-        public string post_id { get; set; }
-        public virtual Post Post { get; set; }
+        public int priority { get; set; } // do uu tien
+        public string post_id { get; set;}
+        public virtual Post Post { get; set;}
     }
 }

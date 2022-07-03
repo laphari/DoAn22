@@ -1,5 +1,6 @@
 ﻿using DATNwebtintuc.Models.ModelEntity;
 using DATNwebtintuc.Models.ModelRequest;
+using DATNwebtintuc.Models.ModelRespon;
 using DATNwebtintuc.Validator;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace DATNwebtintuc.Controllers
         // GET: Post
         public ActionResult Index(bool? create,bool? update,bool? delete,int? page)
         {
+
             var thongtin = data.Posts.ToList();
             if (update == true) 
             {
@@ -30,7 +32,7 @@ namespace DATNwebtintuc.Controllers
             {
                 ViewBag.Messdelete = true;
             }
-            var pagesize = 5;
+            var pagesize = 70;
             if(page == null) 
             {
                 page = 1;
@@ -48,149 +50,198 @@ namespace DATNwebtintuc.Controllers
                 numberpage = totall / pagesize + 1;
             }
             ViewData["totallpage"] = numberpage;
-            return View(result.ToList());
+
+            return View(result.OrderByDescending(x => x.create_date).ToList());
         }
         [ValidateInput(false)]
         public ActionResult Viewcreate() 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
+            ViewData["selectstickpost"] = data.StickyPostss.Where(x => x.post_id == null).ToList();
             ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();
             return View();
         }
         [ValidateInput(false)]
-        public ActionResult Create(PostRequest item , string seriesID) 
+        public ActionResult Create(PostRequest item , string seriesID,string idStickyPosts) 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
-            ViewData["selectseries"] = data.Seriess.ToList();
+            ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();
+            ViewData["selectstickpost"] = data.StickyPostss.Where(x => x.post_id == null).ToList(); ;
             PostRequestValidator validator = new PostRequestValidator();
             var result = validator.Validate(item);
             if (!result.IsValid)
             {
                 {
                     ViewData["checkvalidatepost"] = (result.Errors);
-                    return View("Viewcreate");
+                    return View("Viewcreate");//chua fix
                 }
             }
             else
             {
-                var entitypost = new Post();// -> tạo ra đối tượng -> có 1 id => guid 
-                if(seriesID != "") // th này có chọn seri  
+                var entitypost = new Post();
+                entitypost.post_review = item.post_review;
+                entitypost.post_content = item.post_content;
+                entitypost.post_slug = item.post_slug;
+                entitypost.post_tag = item.post_tag;
+                entitypost.IDcategory = item.IDcategory;
+                if (item.post_teaser == null)
                 {
-                    // check xem post_id có tồng tại seri chư
-                    var FindIdSeries = data.Seriess.Find(seriesID);//gui cai seriesid len de tim kie
-                    // nếu đã có rồi 
-                    if (FindIdSeries.post_id != null)
-                    {
-                        // thì ko tạo bài và trả ra message 
-                        ViewData["sentmessseries"] = "The post already exists";
-                        return View("Viewcreate");
-                    }
-                    else // th chưa có  
-                    {
-                        //
-                        entitypost.post_review = item.post_review;
-                        entitypost.post_content = item.post_content;
-                        entitypost.post_slug = item.post_slug;
-                        entitypost.post_tag = item.post_tag;
-                        entitypost.IDcategory = item.IDcategory;
-                        entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                        entitypost.post_title = item.post_title;
-                        entitypost.create_date = item.create_date;
-                        data.Posts.Add(entitypost);
-                        FindIdSeries.post_id = entitypost.post_id;// gan lai
-                        data.Entry(FindIdSeries).State = EntityState.Modified;
-                        data.SaveChanges(); //xử lý 2 vvd ( gán giá trị lại cho nhau và update cái serri)
-                    }
+                    entitypost.post_teaser = "../UploadPost/logoweb.jpg";
                 }
-                else // th ng ta ko chọn seri 
+                else
                 {
-                    entitypost.post_review = item.post_review;
-                    entitypost.post_content = item.post_content;
-                    entitypost.post_slug = item.post_slug;
-                    entitypost.post_tag = item.post_tag;
-                    entitypost.IDcategory = item.IDcategory;
                     entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                    entitypost.post_title = item.post_title;
-                    entitypost.create_date = item.create_date;
-                    data.Posts.Add(entitypost);
-                    data.SaveChanges();
-                    // chỉ cho ng ta tạo bài viết 
                 }
-                return RedirectToAction("Index", new { create = true });
+               // entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                entitypost.post_title = item.post_title;
+                entitypost.create_date = item.create_date;
+                data.Posts.Add(entitypost);
+                if(seriesID == "" && idStickyPosts == "") //mk k chon cai gi
+                {
+                    data.SaveChanges();
+                    return RedirectToAction("Index", new { create = true });
+                }
+                else 
+                {
+
+                    if(seriesID != "") // co gia tri
+                    {
+                        var Findseriesid = data.Seriess.Find(seriesID);
+                        if(Findseriesid.post_id != null) 
+                        {
+                            ViewData["sentmessseries"] = "The post already exists";
+                            return View("Viewcreate");
+                        }
+                        else 
+                        {
+                            Findseriesid.post_id = entitypost.post_id;
+                            data.Entry(Findseriesid).State = EntityState.Modified;
+                        }
+                    }
+
+                    if(idStickyPosts != "") 
+                    {
+                        var Stickypostid = data.StickyPostss.Find(idStickyPosts);
+                        if(Stickypostid.post_id != null) 
+                        {
+                            ViewData["sentmessstick"] = "The post already exists";
+                            return View("Viewcreate");
+                        }
+                        else 
+                        {
+                            Stickypostid.post_id = entitypost.post_id;
+                            data.Entry(Stickypostid).State = EntityState.Modified;
+                        }
+                    }
+                    data.SaveChanges();
+                    return RedirectToAction("Index", new { create = true });
+                }
             }
         }
         [ValidateInput(false)]
-        public ActionResult Viewupdate(string id) //dau vao la id 
+        public ActionResult Viewupdate(string id, string seriesID, string idStickyPosts) //dau vao la id 
         {
             var update = data.Posts.Find(id);// dau du lieu o trong bang post
             ViewData["selectcategory"] = data.Categories.ToList();
-           
-            ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();//lay ra danh sach ma series dc phep gan cho bai post 
-            var resultidseries = data.Seriess.Where(x => x.post_id == id).FirstOrDefault();// lay ra series ma chua id cua bai post can update
-            if(resultidseries != null) 
+            var updatestickypost = data.StickyPostss.Where(x => x.post_id == id).FirstOrDefault();
+            var updateseries = data.Seriess.Where(x => x.post_id==id).FirstOrDefault();//lay ra danh sach ma series dc phep gan cho bai post 
+            ViewData["selectseriesed"] = data.Seriess.Where(x => x.post_id == null).ToList();
+            ViewData["selectstickyposted"] = data.StickyPostss.Where(x => x.post_id == null).ToList();
+            if (updateseries != null) 
             {
-                ViewData["selectseriesid"] = resultidseries;
+                ViewData["selectseries"] = updateseries;
+            }
+            if(updatestickypost != null)
+            {
+                ViewData["selectstickypost"] = updatestickypost;
             }
             return View(update);// dau ra la mot object
         }
         [ValidateInput(false)]
-        public ActionResult Update(PostRequest item, string seriesID) 
+        public ActionResult Update(string post_teaser,PostRequest item, string seriesID,string idStickyPosts)
         {
-            ViewData["selectcategory"] = data.Categories.ToList();
-            ViewData["selectseries"] = data.Seriess.ToList();
-            PostRequestValidator validator = new PostRequestValidator();
-            var result = validator.Validate(item);
-            if (!result.IsValid)
-            {
-                {
-                    ViewData["checkvalidatepostupdate"] = (result.Errors);
-                    return View("Viewupdate");
-                }
-            }
-            else 
-            {
+            ViewData["selectcategory"] = data.Categories.ToList(); // not null 
+            ViewData["selectseriesed"] = data.Seriess.Where(x => x.post_id == null).ToList(); // allow null 
+            ViewData["selectstickyposted"] = data.StickyPostss.Where(x => x.post_id == null).ToList(); // allow null 
                 var entitypost = new Post();
-                if(seriesID != "") 
+                entitypost.post_id = item.post_id;
+                entitypost.post_review = item.post_review;
+                entitypost.post_content = item.post_content;
+                entitypost.post_slug = item.post_slug;
+                entitypost.post_tag = item.post_tag;
+                entitypost.IDcategory = item.IDcategory;
+                if (item.post_teaser == null)
                 {
-                    entitypost.post_id = item.post_id;
-                    entitypost.post_review = item.post_review;
-                    entitypost.post_content = item.post_content;
-                    entitypost.post_slug = item.post_slug;
-                    entitypost.post_tag = item.post_tag;
-                    entitypost.IDcategory = item.IDcategory;
-                    entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                    entitypost.post_title = item.post_title;
-                    entitypost.create_date = item.create_date;
-                    entitypost.edit_date = item.edit_date;
-                    data.Entry(entitypost).State = EntityState.Modified;
-                    var Findseries = data.Seriess.Where(x => x.post_id == item.post_id).FirstOrDefault();// đối cũ => id post 
-                    data.Seriess.Remove(Findseries);
-                    var seriUpdate = data.Seriess.Where(x => x.seriesID == seriesID).FirstOrDefault();
-                    if (seriUpdate != null)
+                entitypost.post_teaser = post_teaser;
+                }
+                else
+                {
+                entitypost.post_teaser = UploadPosttester(item.post_teaser);
+                }
+                entitypost.post_title = item.post_title;
+                entitypost.create_date = item.create_date;
+                entitypost.edit_date = item.edit_date;
+                if (seriesID != "") 
+                {
+                    // tim no
+                    var findSeries = data.Seriess.Where(x => x.post_id == item.post_id).FirstOrDefault();// tim doi tuong
+                    if (findSeries != null)
                     {
-                        seriUpdate.post_id = entitypost.post_id;
-                        data.Entry(seriUpdate).State = EntityState.Modified;
+                        // xoa no
+                        data.Seriess.Remove(findSeries);
+                        // cap nhap lai series ma nguoi dung muon sua
+                        var updateSeries = data.Seriess.Find(seriesID);
+                        if(updateSeries.post_id == null)
+                        {
+                            updateSeries.post_id = item.post_id;
+                            data.Entry(updateSeries).State = EntityState.Modified;
+                        }
                     }
-                    data.SaveChanges();
-                    
+                    else
+                    {
+                        var updateSeries = data.Seriess.Find(seriesID);
+                        if (updateSeries.post_id == null)
+                        {
+                            updateSeries.post_id = item.post_id;
+                            data.Entry(updateSeries).State = EntityState.Modified;
+                        }
+                    }
                 }
-                else 
+                if(idStickyPosts != "") 
                 {
-                    entitypost.post_id = item.post_id;
-                    entitypost.post_review = item.post_review;
-                    entitypost.post_content = item.post_content;
-                    entitypost.post_slug = item.post_slug;
-                    entitypost.post_tag = item.post_tag;
-                    entitypost.IDcategory = item.IDcategory;
-                    entitypost.post_teaser = UploadPosttester(item.post_teaser);
-                    entitypost.post_title = item.post_title;
-                    entitypost.create_date = item.create_date;
-                    entitypost.edit_date = item.edit_date;
-                    data.Entry(entitypost).State = EntityState.Modified;
-                    data.SaveChanges();
+                    var findidstickypost = data.StickyPostss.Where(x => x.post_id == item.post_id).FirstOrDefault();
+                    if(findidstickypost != null) 
+                    {
+                        data.StickyPostss.Remove(findidstickypost);
+                        var updatestickypost = data.StickyPostss.Find(idStickyPosts);
+                        if(updatestickypost.post_id == null) 
+                        {
+                            updatestickypost.post_id = item.post_id;
+                            data.Entry(updatestickypost).State = EntityState.Modified;
+                        }
+                    }
+                    else 
+                    {
+                        var updateStickyPost = data.StickyPostss.Find(idStickyPosts);
+                        if (updateStickyPost.post_id == null)
+                        {
+                            updateStickyPost.post_id = item.post_id;
+                            data.Entry(updateStickyPost).State = EntityState.Modified;
+                        }
+                    }
                 }
-                return RedirectToAction("Index", new { update = true });
+            else
+            {
+                var isExistStickyPost = data.StickyPostss.Where(x => x.post_id == item.post_id).FirstOrDefault();
+                if(isExistStickyPost != null)
+                {
+                    data.StickyPostss.Remove(isExistStickyPost);
+                }
             }
+                data.Entry(entitypost).State = EntityState.Modified;
+                data.SaveChanges();
+                return RedirectToAction("Index", new { update = true });
+            
         }
         public ActionResult Delete(string idPost)
         {
@@ -202,11 +253,17 @@ namespace DATNwebtintuc.Controllers
             {
                 
                 var seriResult = data.Seriess.Where(x=> x.post_id == postResult.post_id).FirstOrDefault();
+                var stickyResult = data.StickyPostss.Where(x => x.post_id == postResult.post_id).FirstOrDefault();
                 // nếu seriResult có giá trị => xóa bthg
                 // nếu ko có giá trị => lấy gì mà xóa 
                 if(seriResult != null) 
                 {
                     data.Seriess.Remove(seriResult);
+                    data.SaveChanges();
+                }
+                if(stickyResult != null) 
+                {
+                    data.StickyPostss.Remove(stickyResult);
                     data.SaveChanges();
                 }
             }
@@ -236,7 +293,9 @@ namespace DATNwebtintuc.Controllers
         }
         public ActionResult Detail(string id) 
         {
+            ViewData["advertismentimage"] = data.Advertisements.Where(x => x.typeAdvertisement == "Image").Take(6).ToList();
             var detail = data.Posts.Find(id);
+            ViewData["selectpostanddetail"] = data.Posts.OrderByDescending(x => x.create_date).Take(3).ToList();
             return View(detail);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using DATNwebtintuc.Models.ModelEntity;
+using DATNwebtintuc.Models.ModelRespon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,137 @@ namespace DATNwebtintuc.Controllers
         {
             ViewData["advertismentimage"] = data.Advertisements.Where(x => x.typeAdvertisement == "Image").Take(5).ToList();
             ViewData["advertismentvideo"] = data.Advertisements.Where(x => x.typeAdvertisement == "Video").Take(3).ToList();
+                            var query = from ps in data.Posts
+                                        join sp in data.StickyPostss
+                                        on ps.post_id equals sp.post_id
+                                        select new JoinPostandStickypost
+                                        {
+                                            post_id = sp.post_id,
+                                            post_teaser = sp.Post.post_teaser,
+                                            post_title = sp.Post.post_title,
+                                            priority = sp.priority,
+                                        };
+            var queryPostandCategory = from ps in data.Posts
+                                       join ca in data.Categories
+                                       on ps.IDcategory equals ca.IDcategory
+                                       select new PostandCategory
+                                       {
+                                           IDcategory = ca.IDcategory,
+                                           namecategory = ca.namecategory,
+                                           post_id = ps.post_id,
+                                           post_teaser = ps.post_teaser,
+                                           post_title = ps.post_title,
+                                           create_date = ps.create_date,
+                                       };
+            var queryPostandCategory1 = from ps in data.Posts
+                                       join ca in data.Categories
+                                       on ps.IDcategory equals ca.IDcategory
+                                       select new PostandCategory
+                                       {
+                                           IDcategory = ca.IDcategory,
+                                           namecategory = ca.namecategory,
+                                           post_id = ps.post_id,
+                                           post_teaser = ps.post_teaser,
+                                           post_title = ps.post_title,
+                                           create_date = ps.create_date,
+                                       };
+            var queryPostandCategory2 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory3 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory4 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory5 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory6 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory7 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory8 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            ViewData["PostandSticky"] = query.Where(x => x.priority != null).OrderBy(x => x.priority).ToList();
+            ViewData["PostandCategory "] = queryPostandCategory.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderByDescending(x => x.namecategory).Take(3).ToList();
+            ViewData["PostandCategoryphapluat"] = queryPostandCategory1.Where(x => x.namecategory.Contains("PHÁP LUẬT")).OrderByDescending(x => x.namecategory).Take(3).ToList();
+            ViewData["PostandCategorykinhdoanh"] = queryPostandCategory2.Where(x => x.namecategory.Contains("KINH DOANH")).OrderByDescending(x => x.create_date).Take(1).ToList();
+            ViewData["PostandCategorykinhdoanh1"] = queryPostandCategory3.Where(x => x.namecategory.Contains("KINH DOANH")).OrderBy(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategorydoisong"] = queryPostandCategory4.Where(x => x.namecategory.Contains("ĐỜI SỐNG")).OrderByDescending(x => x.create_date).Take(1).ToList();
+            ViewData["PostandCategorydoisong1"] = queryPostandCategory4.Where(x => x.namecategory.Contains("ĐỜI SỐNG")).OrderBy(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategorythegioi"] = queryPostandCategory5.Where(x => x.namecategory.Contains("THẾ GIỚI")).OrderByDescending(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategorythegioi1"] = queryPostandCategory5.Where(x => x.namecategory.Contains("THẾ GIỚI")).OrderBy(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategorygiaitri"] = queryPostandCategory6.Where(x => x.namecategory.Contains("GIẢI TRÍ")).OrderByDescending(x => x.create_date).Take(4).ToList();
+            ViewData["PostandCategoryxe"] = queryPostandCategory7.Where(x => x.namecategory.Contains("XE")).OrderByDescending(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategoryxe1"] = queryPostandCategory7.Where(x => x.namecategory.Contains("XE")).OrderBy(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategorycanbiet"] = queryPostandCategory8.Where(x => x.namecategory.Contains("CẦN BIẾT")).OrderByDescending(x => x.create_date).Take(4).ToList();
             return View();
         }
 
@@ -32,6 +164,79 @@ namespace DATNwebtintuc.Controllers
             return View();
         }
         public ActionResult Categories() 
+        {
+            
+            return View();
+        }
+        public ActionResult Categoriessociety()
+        {
+            var queryPostandCategory1 = from ps in data.Posts
+                                       join ca in data.Categories
+                                       on ps.IDcategory equals ca.IDcategory
+                                       select new PostandCategory
+                                       {
+                                           IDcategory = ca.IDcategory,
+                                           namecategory = ca.namecategory,
+                                           post_id = ps.post_id,
+                                           post_teaser = ps.post_teaser,
+                                           post_title = ps.post_title,
+                                           create_date = ps.create_date,
+                                       };
+            var queryPostandCategory2 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory3 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            ViewData["PostandCategorysociety"] = queryPostandCategory1.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderByDescending(x => x.create_date).Take(1).ToList();
+            ViewData["PostandCategorysociety2"] = queryPostandCategory2.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderBy(x => x.create_date).Take(2).ToList();
+            ViewData["PostandCategorysociety3"] = queryPostandCategory3.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderBy(x => x.create_date).Take(2).ToList();
+
+            return View();
+        }
+        public ActionResult Categoriesworld()
+        {
+            return View();
+        }
+        public ActionResult Categoriesnews()
+        {
+            return View();
+        }
+        public ActionResult Categoriesbusiness()
+        {
+            return View();
+        }
+        public ActionResult Categorieslife()
+        {
+            return View();
+        }
+        public ActionResult Categoriesentertainment()
+        {
+            return View();
+        }
+        public ActionResult Categoriescar()
+        {
+            return View();
+        }
+        public ActionResult Categoriestechnology() 
         {
             return View();
         }

@@ -4,13 +4,25 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
     var getimgadvertisment = ViewData["advertismentimage"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
     var getvideoadvertisment = ViewData["advertismentvideo"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
-
+    var gettinmoi = ViewData["PostandSticky"] as List<DATNwebtintuc.Models.ModelRespon.JoinPostandStickypost>;
+    var getxahoi = ViewData["PostandCategory "] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getphapluat = ViewData["PostandCategoryphapluat"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getkinhdoanh1 = ViewData["PostandCategorykinhdoanh"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getkinhdoanh2 = ViewData["PostandCategorykinhdoanh1"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getdoisong = ViewData["PostandCategorydoisong"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getdoisong1 = ViewData["PostandCategorydoisong1"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getthegioi = ViewData["PostandCategorythegioi"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getthegioi1 = ViewData["PostandCategorythegioi1"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getgiaitri = ViewData["PostandCategorygiaitri"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getxe = ViewData["PostandCategoryxe"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getxe1 = ViewData["PostandCategoryxe1"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
+    var getcanbiet = ViewData["PostandCategorycanbiet"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
 }
 
 
 <div>
     <div class="chutinmoi">
-        <p>Tin mới</p>
+        <p>TIN MỚI</p>
     </div>
     <div class="mau">
 
@@ -18,17 +30,21 @@
 </div>
 <div class="tieudiem">
     <div class="tieudiem1">
-        <div class="content1">
-            <div class="imgcontentt">
-                <img src="https://icdn.dantri.com.vn/zoom/516_344/2022/06/06/202205260825345638pho-chu-tich-quoc-hoi-tran-quang-phuong-2-crop-1654501911483.jpeg" />
-            </div>
-            <div class="chuduoianhcontent">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="btn-content">
-                <a href="d" class="btn btn-primary btn-sm" style="color:white">Xem thêm</a>
-            </div>
-        </div>
+            @foreach (var item in gettinmoi)
+            {
+                <div class="content1">
+                    <div class="imgcontentt">
+                        <img src="@item.post_teaser" />
+                    </div>
+                    <div class="chuduoianhcontent">
+                        <a href="/Post/Detail?id=@item.post_id">@item.post_title.Substring(0, 94)</a>
+                    </div>
+                    <div class="btn-content">
+                        <a href="/Post/Detail?id=@item.post_id" class="btn btn-primary btn-sm" style="color:white">Xem thêm</a>
+                    </div>
+                </div>
+            }
+        }
     </div>
     <div class="tieudiem2">
         <div class="content2">
@@ -88,55 +104,54 @@
 
 <div>
     <div class="chutinmoi">
-        <p>Thời sự</p>
+        <p>XÃ HỘI</p>
     </div>
     <div class="mau">
 
     </div>
 </div>
 
+
 <div class="thoisutd">
-    <div class="thoisu">
-        <div class="thoisu1">
-            <div class="imgthoisu1">
-                @*<figure class="zoom" style="background: url(https://icdn.dantri.com.vn/zoom/516_344/2022/06/07/anh-ky-luat-crop-1654537234866.jpeg)" onmousemove="zoom(event)" ontouchmove="zoom(event)">
-                        <img src="https://icdn.dantri.com.vn/zoom/516_344/2022/06/07/anh-ky-luat-crop-1654537234866.jpeg" />
-                    </figure>*@
-                <img src="https://icdn.dantri.com.vn/zoom/516_344/2022/06/07/anh-ky-luat-crop-1654537234866.jpeg" />
-            </div>
-            <div class="chuthoisu1">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất th   ường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="thoisu">
-        <div class="thoisu1">
-            <div class="imgthoisu1">
-                <img src="https://icdn.dantri.com.vn/zoom/516_344/2022/06/07/anh-ky-luat-crop-1654537234866.jpeg" />
-            </div>
-            <div class="chuthoisu1">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="thoisu">
-        <div class="thoisu1">
-            <div class="imgthoisu1">
-                <img src="https://icdn.dantri.com.vn/zoom/516_344/2022/06/07/anh-ky-luat-crop-1654537234866.jpeg" />
-            </div>
-            <div class="chuthoisu1">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
+    @foreach (var item in getxahoi)
+    {
+        <div class="thoisu">
+            <div class="thoisu1">
+                <div class="imgthoisu1">
+                    <img src="@item.post_teaser" />
+                </div>
+                <div class="chuthoisu1">
+                    <a href="/Post/Detail?id=@item.post_id">
+                        @if (item.post_title.Length > 70)
+                        {
+                            <td>@item.post_title.Substring(0, 70) ...</td>
+                        }
+                        else
+                        {
+                            <td>@item.post_title</td>
+                        }
+                    </a>
+                </div>
+                <div class="kitutieudiem">
+                    <div class="kitutieudiemngaytao">
+                        <div class="kitutieudiemngaytaokitu">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="kitutieudiemngaytaochu">
+                            <p>@item.create_date</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
+    }
 </div>
+    
+
 
 <div>
     <div class="chutinmoi">
-        <p>Tiêu điểm</p>
+        <p>PHÁP LUẬT</p>
     </div>
     <div class="mau">
 
@@ -144,141 +159,38 @@
 </div>
 
 <div class="batdautieudiem">
-    <div class="tieudiemtd">
-
-        <div class="tieudiem1">
-            <div class="anhtieudiem">
-                <a href="ds"><img class="anhtieudiemlink" src="https://icdn.dantri.com.vn/thumb_w/660/2021/11/23/bong-ban-1637663233926.jpg" /></a>
-            </div>
-            <div class="chutieudiem">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="kitutieudiem">
-                <div class="kitutieudiemngaytao">
-                    <div class="kitutieudiemngaytaokitu">
-                        <i class="fas fa-calendar"></i>
+    <div class="tieudiemtdandqc">
+        <div class="tieudiemtd">
+            @foreach (var item in getphapluat)
+            {
+                <div class="tieudiem1">
+                    <div class="anhtieudiem">
+                        <a href="/Post/Detail?id=@item.post_id"><img class="anhtieudiemlink" src="@item.post_teaser" /></a>
                     </div>
-                    <div class="kitutieudiemngaytaochu">
-                        <p>05/11/2022</p>
+                    <div class="chutieudiem">
+                        <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
                     </div>
-                </div>
-            </div>
-
-            <div class="tieudiemcon">
-                <div class="tieudiemconanh">
-                    <img src="https://icdn.dantri.com.vn/zoom/233_155/2022/06/07/nguyen-hong-dien-1654598346271.jpeg" />
-                </div>
-                <div>
-                    <div class="tieudiemconchu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                    <div>
-                        <div class="kitutieudiemcon">
-                            <div class="kitutieudiemconkitu">
+                    <div class="kitutieudiem">
+                        <div class="kitutieudiemngaytao">
+                            <div class="kitutieudiemngaytaokitu">
                                 <i class="fas fa-calendar"></i>
                             </div>
-                            <div class="kitutieudiemconchu">
-                                <p>05/11/2022</p>
+                            <div class="kitutieudiemngaytaochu">
+                                <p>@item.create_date</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="tieudiemcon">
-                <div class="tieudiemconanh">
-                    <img src="https://icdn.dantri.com.vn/zoom/233_155/2022/06/07/nguyen-hong-dien-1654598346271.jpeg" />
-                </div>
-                <div>
-                    <div class="tieudiemconchu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                    <div>
-                        <div class="kitutieudiemcon">
-                            <div class="kitutieudiemconkitu">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <div class="kitutieudiemconchu">
-                                <p>05/11/2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="tieudiem1">
-            <div class="anhtieudiem">
-                <a href="ds"><img class="anhtieudiemlink" src="https://icdn.dantri.com.vn/thumb_w/660/2021/11/23/bong-ban-1637663233926.jpg" /></a>
-            </div>
-            <div class="chutieudiem">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="kitutieudiem">
-                <div class="kitutieudiemngaytao">
-                    <div class="kitutieudiemngaytaokitu">
-                        <i class="fas fa-calendar"></i>
-                    </div>
-                    <div class="kitutieudiemngaytaochu">
-                        <p>05/11/2022</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tieudiemcon">
-                <div class="tieudiemconanh">
-                    <img src="https://icdn.dantri.com.vn/zoom/233_155/2022/06/07/nguyen-hong-dien-1654598346271.jpeg" />
-                </div>
-                <div>
-                    <div class="tieudiemconchu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                    <div>
-                        <div class="kitutieudiemcon">
-                            <div class="kitutieudiemconkitu">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <div class="kitutieudiemconchu">
-                                <p>05/11/2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tieudiemcon">
-                <div class="tieudiemconanh">
-                    <img src="https://icdn.dantri.com.vn/zoom/233_155/2022/06/07/nguyen-hong-dien-1654598346271.jpeg" />
-                </div>
-                <div>
-                    <div class="tieudiemconchu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                    <div>
-                        <div class="kitutieudiemcon">
-                            <div class="kitutieudiemconkitu">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <div class="kitutieudiemconchu">
-                                <p>05/11/2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="quangcao1">
-            <a href="d"><img class="quangcao1img" src="@getimgadvertisment[0].linkAdvertisement" /></a>
+            }
         </div>
     </div>
+
 </div>
 
 
 <div>
     <div class="chutinmoi">
-        <p>Xã hội</p>
+        <p>KINH DOANH</p>
     </div>
     <div class="mau">
 
@@ -287,36 +199,40 @@
 
 <div class="batdauxahoi">
     <div class="xahoitd">
-        <div class="xahoicon">
-            <div class="xahoiimg">
-                <a><img class="xahoiimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/anh-chan-dung-2-1654689433515.jpeg" /></a>
-            </div>
-            <div class="xahoichu">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="xahoingay">
-                <div class="kitutieudiem">
-                    <div class="kitutieudiemngaytao">
-                        <div class="kitutieudiemngaytaokitu">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <div class="kitutieudiemngaytaochu">
-                            <p>05/11/2022</p>
+        @foreach (var item in getkinhdoanh1)
+        {
+            <div class="xahoicon">
+                <div class="xahoiimg">
+                    <a href="/Post/Detail?id=@item.post_id"><img class="xahoiimglink" src="@item.post_teaser" /></a>
+                </div>
+                <div class="xahoichu">
+                    <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                </div>
+                <div class="xahoingay">
+                    <div class="kitutieudiem">
+                        <div class="kitutieudiemngaytao">
+                            <div class="kitutieudiemngaytaokitu">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="kitutieudiemngaytaochu">
+                                <p>@item.create_date</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div>
+        }
+    <div>
+        @foreach (var item in getkinhdoanh2)
+        {
             <div class="xahoicon2">
                 <div class="xahoicon2noidung">
                     <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/vnapotaltongbithunguyenphutronghoidamtructuyenvoitongthonghanquocyoonsuk-yeolstand-1654671523052.jpg" /></a>
+                        <a href="/Post/Detail?id=@item.post_id"><img class="xahoicon2anhlink" src="@item.post_teaser" /></a>
                     </div>
                     <div>
                         <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
                         </div>
                         <div>
                             <div class="kitutieudiemcon">
@@ -324,56 +240,16 @@
                                     <i class="fas fa-calendar"></i>
                                 </div>
                                 <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="xahoicon2noidung">
-                    <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/vnapotaltongbithunguyenphutronghoidamtructuyenvoitongthonghanquocyoonsuk-yeolstand-1654671523052.jpg" /></a>
-                    </div>
-                    <div>
-                        <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div>
-                            <div class="kitutieudiemcon">
-                                <div class="kitutieudiemconkitu">
-                                    <i class="fas fa-calendar"></i>
-                                </div>
-                                <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="xahoicon2noidung">
-                    <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/vnapotaltongbithunguyenphutronghoidamtructuyenvoitongthonghanquocyoonsuk-yeolstand-1654671523052.jpg" /></a>
-                    </div>
-                    <div>
-                        <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div>
-                            <div class="kitutieudiemcon">
-                                <div class="kitutieudiemconkitu">
-                                    <i class="fas fa-calendar"></i>
-                                </div>
-                                <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
+                                    <p>@item.create_date</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+
+    </div>
 
 
         <div class="quangcao2">
@@ -385,7 +261,7 @@
 
 <div>
     <div class="chutinmoi">
-        <p>Pháp luật</p>
+        <p>ĐỜI SỐNG</p>
     </div>
     <div class="mau">
 
@@ -394,37 +270,40 @@
 
 <div class="batdauphapluat">
     <div class="phapluattd">
-
-        <div>
-            <div class="phapluatimg">
-                <a href="d"><img class="phapluatimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/anh-phoc-2-1654655044116-1654660092597.jpeg" /></a>
-            </div>
-            <div class="xahoichu">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="xahoingay">
-                <div class="kitutieudiem">
-                    <div class="kitutieudiemngaytao">
-                        <div class="kitutieudiemngaytaokitu">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <div class="kitutieudiemngaytaochu">
-                            <p>05/11/2022</p>
+        @foreach (var item in getdoisong)
+        {
+            <div>
+                <div class="phapluatimg">
+                    <a href="/Post/Detail?id=@item.post_id"><img class="phapluatimglink" src="@item.post_teaser" /></a>
+                </div>
+                <div class="xahoichu">
+                    <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                </div>
+                <div class="xahoingay">
+                    <div class="kitutieudiem">
+                        <div class="kitutieudiemngaytao">
+                            <div class="kitutieudiemngaytaokitu">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="kitutieudiemngaytaochu">
+                                <p>@item.create_date</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div>
+        }
+    <div>
+        @foreach (var item in getdoisong1)
+        {
             <div class="xahoicon2">
                 <div class="xahoicon2noidung">
                     <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/28619874530457083290117235254049708106551127n-1654655617182.jpg" /></a>
+                        <a href="/Post/Detail?id=@item.post_id"><img class="xahoicon2anhlink" src="@item.post_teaser" /></a>
                     </div>
                     <div>
                         <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
                         </div>
                         <div>
                             <div class="kitutieudiemcon">
@@ -432,66 +311,26 @@
                                     <i class="fas fa-calendar"></i>
                                 </div>
                                 <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="xahoicon2noidung">
-                    <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/28619874530457083290117235254049708106551127n-1654655617182.jpg" /></a>
-                    </div>
-                    <div>
-                        <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div>
-                            <div class="kitutieudiemcon">
-                                <div class="kitutieudiemconkitu">
-                                    <i class="fas fa-calendar"></i>
-                                </div>
-                                <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="xahoicon2noidung">
-                    <div class="xahoicon2anh">
-                        <a href="d"><img class="xahoicon2anhlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/08/28619874530457083290117235254049708106551127n-1654655617182.jpg" /></a>
-                    </div>
-                    <div>
-                        <div class="xahoicon2chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div>
-                            <div class="kitutieudiemcon">
-                                <div class="kitutieudiemconkitu">
-                                    <i class="fas fa-calendar"></i>
-                                </div>
-                                <div class="kitutieudiemconchu">
-                                    <p>05/11/2022</p>
+                                    <p>@item.create_date</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+
+    </div>
 
         <div class="quangcao3">
-            <a href="ds"><img class="quangcao3img" src="@getimgadvertisment[3].linkAdvertisement" /></a>
+            <a href="ds"><img class="quangcao3img" src="@getimgadvertisment[2].linkAdvertisement" /></a>
         </div>
     </div>
 </div>
 
 <div>
     <div class="chutinmoi">
-        <p>Thế giới</p>
+        <p>THẾ GIỚI</p>
     </div>
     <div class="mau">
 
@@ -500,62 +339,35 @@
 
 <div class="batdauthegioi">
     <div class="thegioi">
-        <div>
+        <div>  
             <div class="thegioi1">
-                <div>
-                    <div class="imgthegioi">
-                        <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
+                @foreach (var item in getthegioi)
+                {
+                    <div>
+                        <div class="imgthegioi">
+                            <a href="/Post/Detail?id=@item.post_id"><img class="imgthegioilink" src="@item.post_teaser" /></a>
+                        </div>
+                        <div class="chuthegioi">
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                        </div>
                     </div>
-                    <div class="chuthegioi">
-                        <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="imgthegioi">
-                        <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
-                    </div>
-                    <div class="chuthegioi">
-                        <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="imgthegioi">
-                        <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
-                    </div>
-                    <div class="chuthegioi">
-                        <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-            </div>
+                }
 
+            </div>
+  
             <div>
                 <div class="thegioi2">
-                    <div>
-                        <div class="imgthegioi">
-                            <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
+                    @foreach (var item in getthegioi1)
+                    {
+                        <div>
+                            <div class="imgthegioi">
+                                <a href="/Post/Detail?id=@item.post_id"><img class="imgthegioilink" src="@item.post_teaser" /></a>
+                            </div>
+                            <div class="chuthegioi">
+                                <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                            </div>
                         </div>
-                        <div class="chuthegioi">
-                            <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="imgthegioi">
-                            <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
-                        </div>
-                        <div class="chuthegioi">
-                            <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="imgthegioi">
-                            <a href="d"><img class="imgthegioilink" src="https://icdn.dantri.com.vn/zoom/252_168/2022/06/09/capture-1654752183873.gif" /></a>
-                        </div>
-                        <div class="chuthegioi">
-                            <a href="g">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -585,7 +397,7 @@
 
 <div>
     <div class="chutinmoi">
-        <p>Đời sống</p>
+        <p>GIẢI TRÍ</p>
     </div>
     <div class="mau">
 
@@ -594,48 +406,24 @@
 
 <div class="batdaudoisong">
     <div class="doisong">
+        @foreach (var item in getgiaitri)
+        {
+            <div class="doisong1">
+                <div class="doisongimg">
+                    <a href="/Post/Detail?id=@item.post_id"><img class="doisongimglink" src="@item.post_teaser" /></a>
+                </div>
+                <div class="chudoisong">
+                    <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                </div>
+            </div>
+        }
 
-        <div class="doisong1">
-            <div class="doisongimg">
-                <a href="f"><img class="doisongimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/u23vn-1654698913149-1654730332060.jpeg" /></a>
-            </div>
-            <div class="chudoisong">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
-
-        <div class="doisong1">
-            <div class="doisongimg">
-                <a href="f"><img class="doisongimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/u23vn-1654698913149-1654730332060.jpeg" /></a>
-            </div>
-            <div class="chudoisong">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
-
-        <div class="doisong1">
-            <div class="doisongimg">
-                <a href="f"><img class="doisongimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/u23vn-1654698913149-1654730332060.jpeg" /></a>
-            </div>
-            <div class="chudoisong">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
-
-        <div class="doisong1">
-            <div class="doisongimg">
-                <a href="f"><img class="doisongimglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/u23vn-1654698913149-1654730332060.jpeg" /></a>
-            </div>
-            <div class="chudoisong">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-        </div>
     </div>
 </div>
 
 <div>
     <div class="chutinmoi">
-        <p>Xe hơi</p>
+        <p>XE</p>
     </div>
     <div class="mau">
 
@@ -648,64 +436,31 @@
     <div class="xevacanbiet">
         <div class="xe">
             <div class="xehoi">
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
+                @foreach (var item in getxe)
+                {
+                    <div class="xe1">
+                        <div class="anhxe">
+                            <a href="/Post/Detail?id=@item.post_id"><img class="anhxelink" src="@item.post_teaser" /></a>
+                        </div>
+                        <div class="chuxe">
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                        </div>
                     </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
-                    </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
-                    </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-
+                }
             </div>
 
             <div class="xehoi2">
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
+                @foreach (var item in getxe1)
+                {
+                    <div class="xe1">
+                        <div class="anhxe">
+                            <a href="/Post/Detail?id=@item.post_id"><img class="anhxelink" src="@item.post_teaser" /></a>
+                        </div>
+                        <div class="chuxe">
+                            <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                        </div>
                     </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
-                    </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
-
-                <div class="xe1">
-                    <div class="anhxe">
-                        <a href="d"><img class="anhxelink" src="https://photo-cms-xedoisong.zadn.vn/w700/Uploaded/2022/ycivopcg/2021_11_06/toyota/xedoisong_2022_toyota_camry_facelift_sap_ve_viet_nam_1_iklf.jpg" /></a>
-                    </div>
-                    <div class="chuxe">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
@@ -720,89 +475,29 @@
             </div>
             <div>
                 <div>
-                    <div class="canbietthongtin">
-                        <div class="imgcanbiet">
-                            <a href="d"><img class="imgcanbietlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/bidenopecillustration-1654758778676.png" /></a>
-                        </div>
-                        <div>
-                            <div class="chucanbietthongtin">
-                                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
+                    @foreach (var item in getcanbiet)
+                    {
+                        <div class="canbietthongtin">
+                            <div class="imgcanbiet">
+                                <a href="/Post/Detail?id=@item.post_id"><img class="imgcanbietlink" src="@item.post_teaser" /></a>
                             </div>
                             <div>
-                                <div class="kitutieudiemcon">
-                                    <div class="kitutieudiemconkitu">
-                                        <i class="fas fa-calendar"></i>
-                                    </div>
-                                    <div class="kitutieudiemconchu">
-                                        <p>05/11/2022</p>
+                                <div class="chucanbietthongtin">
+                                    <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                                </div>
+                                <div>
+                                    <div class="kitutieudiemcon">
+                                        <div class="kitutieudiemconkitu">
+                                            <i class="fas fa-calendar"></i>
+                                        </div>
+                                        <div class="kitutieudiemconchu">
+                                            <p>@item.create_date</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="canbietthongtin">
-                        <div class="imgcanbiet">
-                            <a href="d"><img class="imgcanbietlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/bidenopecillustration-1654758778676.png" /></a>
-                        </div>
-                        <div>
-                            <div class="chucanbietthongtin">
-                                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                            </div>
-                            <div>
-                                <div class="kitutieudiemcon">
-                                    <div class="kitutieudiemconkitu">
-                                        <i class="fas fa-calendar"></i>
-                                    </div>
-                                    <div class="kitutieudiemconchu">
-                                        <p>05/11/2022</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="canbietthongtin">
-                        <div class="imgcanbiet">
-                            <a href="d"><img class="imgcanbietlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/bidenopecillustration-1654758778676.png" /></a>
-                        </div>
-                        <div>
-                            <div class="chucanbietthongtin">
-                                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                            </div>
-                            <div>
-                                <div class="kitutieudiemcon">
-                                    <div class="kitutieudiemconkitu">
-                                        <i class="fas fa-calendar"></i>
-                                    </div>
-                                    <div class="kitutieudiemconchu">
-                                        <p>05/11/2022</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="canbietthongtin">
-                        <div class="imgcanbiet">
-                            <a href="d"><img class="imgcanbietlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/06/09/bidenopecillustration-1654758778676.png" /></a>
-                        </div>
-                        <div>
-                            <div class="chucanbietthongtin">
-                                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                            </div>
-                            <div>
-                                <div class="kitutieudiemcon">
-                                    <div class="kitutieudiemconkitu">
-                                        <i class="fas fa-calendar"></i>
-                                    </div>
-                                    <div class="kitutieudiemconchu">
-                                        <p>05/11/2022</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -811,7 +506,7 @@
 
 <div>
     <div class="chutinmoi">
-        <p>Giải trí</p>
+        <p>KINH DOANH</p>
     </div>
     <div class="mau">
 
@@ -913,7 +608,7 @@
         </div>
 
         <div class="quangcao4">
-            <a href="d"><img class="quangcao4link" src="@getimgadvertisment[2].linkAdvertisement" /></a>
+            <a href="d"><img class="quangcao4link" src="@getimgadvertisment[3].linkAdvertisement" /></a>
         </div>
 
     </div>
@@ -921,7 +616,7 @@
 
 <div>
     <div class="chutinmoi">
-        <p>Công nghệ</p>
+        <p>CÔNG NGHỆ</p>
     </div>
     <div class="mau">
 

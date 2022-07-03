@@ -15,8 +15,9 @@ namespace DATNwebtintuc.Controllers
         private DATNwebtintucContext data = new DATNwebtintucContext();
 
         // GET: Category
-        public ActionResult Index(bool? create, bool? update)
+        public ActionResult Index(bool? create, bool? update,bool? delete,int? page)
         {
+            var thongtin = data.Categories.ToList();
             if (create == true)
             {
                 ViewBag.Messcreate = true;
@@ -27,8 +28,30 @@ namespace DATNwebtintuc.Controllers
                 ViewBag.Messupdate = true;
             }
 
-            var thongtin = data.Categories.ToList();
-            return View(thongtin);
+            if (delete == true)
+            {
+                ViewBag.Messdelete = true;
+            }
+            var pagesize = 4;
+            if(page == null) 
+            {
+                page = 1;
+            }
+            var totall = thongtin.Count();
+            var paging = (page - 1) * pagesize;
+            var result = thongtin.OrderBy(x => x.IDcategory).Skip(paging ?? 1).Take(pagesize);//??
+            var numberpage = 0;
+            if (totall % pagesize == 0)
+            {
+                numberpage = totall / pagesize;
+            }
+            else
+            {
+                numberpage = totall / pagesize + 1;
+            }
+            ViewData["totallpage"] = numberpage;
+
+            return View(result.ToList());
         }
         public ActionResult Viewcreate() 
         {
@@ -92,7 +115,7 @@ namespace DATNwebtintuc.Controllers
             {
                 data.Categories.Remove(delete);
                 data.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { delete = true });
             }
             else 
             {

@@ -1,0 +1,16 @@
+﻿@model DATNwebtintuc.Models.ModelEntity.StickyPosts
+@{
+    ViewBag.Title = "Viewupdate";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+}
+
+<form action="/StickyPosts/Update" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formGroupExampleInput" readonly hidden>Mã Sticky</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="idStickyPosts" value="@Model.idStickyPosts" readonly hidden>
+        <label for="formGroupExampleInput">Tên Series</label>
+        <input type="number" class="form-control" id="formGroupExampleInput" name="priority" value="@Model.priority">
+        <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Sửa</button>
+    </div>
+</form>
+
