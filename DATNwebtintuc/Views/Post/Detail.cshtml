@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
     var getimgadvertisment = ViewData["advertismentimage"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
     var getbaivietganday = ViewData["selectpostanddetail"] as List<DATNwebtintuc.Models.ModelEntity.Post>;
+    var gethastagdetail = ViewData["gethastags"] as Array;
+    var getcount = ViewData["Viewcount"];
 }
 
 <div class="trangchudetail">
@@ -68,26 +70,28 @@
             <a href="d"><img class="quangcao8link" src="@getimgadvertisment[5].linkAdvertisement" /></a>
         </div>
     </div>
-</div>
 
-<div class="hastag">
-    <div class="hastag1">
-        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
-    </div>
-    <div class="hastag2">
-        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
-    </div>
-    <div class="hastag2">
-        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
-    </div>
-    <div class="hastag2">
-        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
-    </div>
-    <div class="hastag2">
-        <a href="s" class="btn btn-outline-secondary btn-sm">#DOI SONG</a>
-    </div>
 </div>
 
 
 
 
+@{
+    if (gethastagdetail.Length <= 0)
+    {
+
+
+        <h4>không có hastag</h4>
+    }
+    else
+    {
+        foreach (var item in gethastagdetail)
+        {
+            if (item.ToString() != "")
+            {
+                <a href="/Post/FindHastag?keyWord=@item" class="btn btn-outline-dark btn-sm btndetail">#@item</a>
+            }
+        }
+    }
+
+}

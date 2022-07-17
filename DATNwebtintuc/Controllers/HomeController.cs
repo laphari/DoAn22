@@ -15,17 +15,7 @@ namespace DATNwebtintuc.Controllers
         public ActionResult Index()
         {
             ViewData["advertismentimage"] = data.Advertisements.Where(x => x.typeAdvertisement == "Image").Take(5).ToList();
-            ViewData["advertismentvideo"] = data.Advertisements.Where(x => x.typeAdvertisement == "Video").Take(3).ToList();
-                            var query = from ps in data.Posts
-                                        join sp in data.StickyPostss
-                                        on ps.post_id equals sp.post_id
-                                        select new JoinPostandStickypost
-                                        {
-                                            post_id = sp.post_id,
-                                            post_teaser = sp.Post.post_teaser,
-                                            post_title = sp.Post.post_title,
-                                            priority = sp.priority,
-                                        };
+            ViewData["advertismentvideo"] = data.Advertisements.Where(x => x.typeAdvertisement == "Video").Take(3).ToList();                           
             var queryPostandCategory = from ps in data.Posts
                                        join ca in data.Categories
                                        on ps.IDcategory equals ca.IDcategory
@@ -37,6 +27,7 @@ namespace DATNwebtintuc.Controllers
                                            post_teaser = ps.post_teaser,
                                            post_title = ps.post_title,
                                            create_date = ps.create_date,
+                                           ViewCount =ps.ViewCount,
                                        };
             var queryPostandCategory1 = from ps in data.Posts
                                        join ca in data.Categories
@@ -134,9 +125,34 @@ namespace DATNwebtintuc.Controllers
                                             post_title = ps.post_title,
                                             create_date = ps.create_date,
                                         };
-            ViewData["PostandSticky"] = query.Where(x => x.priority != null).OrderBy(x => x.priority).ToList();
-            ViewData["PostandCategory "] = queryPostandCategory.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderByDescending(x => x.namecategory).Take(3).ToList();
-            ViewData["PostandCategoryphapluat"] = queryPostandCategory1.Where(x => x.namecategory.Contains("PHÁP LUẬT")).OrderByDescending(x => x.namecategory).Take(3).ToList();
+            var queryPostandCategory9 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            var queryPostandCategory10 = from ps in data.Posts
+                                        join ca in data.Categories
+                                        on ps.IDcategory equals ca.IDcategory
+                                        select new PostandCategory
+                                        {
+                                            IDcategory = ca.IDcategory,
+                                            namecategory = ca.namecategory,
+                                            post_id = ps.post_id,
+                                            post_teaser = ps.post_teaser,
+                                            post_title = ps.post_title,
+                                            create_date = ps.create_date,
+                                        };
+            
+            ViewData["PostandSticky"] = data.Posts.Where(x => x.stickypost !=null).OrderBy(x => x.stickypost).OrderByDescending(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategory "] = queryPostandCategory.Where(x => x.namecategory.Contains("XÃ HỘI")).OrderByDescending(x => x.create_date).Take(3).ToList();
+            ViewData["PostandCategoryphapluat"] = queryPostandCategory1.Where(x => x.namecategory.Contains("PHÁP LUẬT")).OrderByDescending(x => x.create_date).Take(3).ToList();
             ViewData["PostandCategorykinhdoanh"] = queryPostandCategory2.Where(x => x.namecategory.Contains("KINH DOANH")).OrderByDescending(x => x.create_date).Take(1).ToList();
             ViewData["PostandCategorykinhdoanh1"] = queryPostandCategory3.Where(x => x.namecategory.Contains("KINH DOANH")).OrderBy(x => x.create_date).Take(3).ToList();
             ViewData["PostandCategorydoisong"] = queryPostandCategory4.Where(x => x.namecategory.Contains("ĐỜI SỐNG")).OrderByDescending(x => x.create_date).Take(1).ToList();
@@ -147,6 +163,10 @@ namespace DATNwebtintuc.Controllers
             ViewData["PostandCategoryxe"] = queryPostandCategory7.Where(x => x.namecategory.Contains("XE")).OrderByDescending(x => x.create_date).Take(3).ToList();
             ViewData["PostandCategoryxe1"] = queryPostandCategory7.Where(x => x.namecategory.Contains("XE")).OrderBy(x => x.create_date).Take(3).ToList();
             ViewData["PostandCategorycanbiet"] = queryPostandCategory8.Where(x => x.namecategory.Contains("CẦN BIẾT")).OrderByDescending(x => x.create_date).Take(4).ToList();
+            ViewData["PostandCategorythoisu"] = queryPostandCategory9.Where(x => x.namecategory.Contains("THỜI SỰ")).OrderByDescending(x => x.create_date).Take(2).ToList();
+            ViewData["PostandCategorythoisu1"] = queryPostandCategory9.Where(x => x.namecategory.Contains("THỜI SỰ")).OrderBy(x => x.create_date).Take(2).ToList();
+            ViewData["PostandCategorycongnghe"] = queryPostandCategory10.Where(x => x.namecategory.Contains("CÔNG NGHỆ")).OrderByDescending(x => x.create_date).Take(2).ToList();
+            ViewData["PostandCategorycongnghe1"] = queryPostandCategory10.Where(x => x.namecategory.Contains("CÔNG NGHỆ")).OrderBy(x => x.create_date).Take(2).ToList();
             return View();
         }
 
@@ -237,6 +257,10 @@ namespace DATNwebtintuc.Controllers
             return View();
         }
         public ActionResult Categoriestechnology() 
+        {
+            return View();
+        }
+        public ActionResult Hastags() 
         {
             return View();
         }

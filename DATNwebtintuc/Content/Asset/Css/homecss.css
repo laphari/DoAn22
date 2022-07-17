@@ -3,7 +3,41 @@
 
 body {
 }
+.nav-3 {
+    display: flex;
+    margin-top: 30px;
+    margin-left:50px;
+}
+.slide-to
+{
+    margin-top:10px;
+}
+#imgcon {
+    width: 1150px;
+    height: 400px;
+    position: relative;
+    opacity: 0.9;
+}
+.btn-slide .btnnext {
+    position: absolute;
+    right: 63px;
+    bottom: 10px;
+}
 
+.btn-slide .btnpre {
+    position: absolute;
+    left: 50px;
+    bottom: 10px;
+}
+.chu-slide > a 
+{
+    position: absolute;
+    bottom: -160px;
+    left: 60px;
+    font-size: 29px;
+    color: rgb(255, 250, 250);
+    text-decoration:none;
+}
 .tieude {
     background-color: #111111;
     width: 100%;
@@ -163,7 +197,7 @@ body {
         }
 
 .btn-content {
-    margin-top: 22px;
+    margin-top: 42px;
     margin-left: 50px;
 }
 
@@ -260,7 +294,7 @@ body {
     }
 
 .chuthoisu1 {
-    margin-left: 62px;
+    margin-left: 50px;
     margin-top: 10px;
     width: 325px;
 }
@@ -684,6 +718,10 @@ body {
     color: black;
     text-decoration: none;
 }
+.chugiaitri>a:hover
+{
+    color:blue;
+} 
 .giaitri
 {
     display:flex;
@@ -1247,4 +1285,60 @@ body {
 .tieudiemtdandqc
 {
     display:flex
+}
+.chugiaitri>a:hover
+{
+    color:blue;
+}
+.hastags-chutieude
+{
+    margin-left:62px;
+    font-size:25px;
+    margin-top:20px;
+}
+.hastags-imglink {
+    margin-left: 62px;
+    margin-top: 40px;
+    width:300px;
+}
+.hastags-content
+{
+    display:flex;
+}
+.hastags-chu {
+    margin-top: 40px;
+    margin-left: 10px;
+    width: 300px;
+}
+.hastags-chu>a
+{
+    color:black;
+    text-decoration:none;
+}
+.hastag-ngaytao 
+{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.hastag-ngaytao >i
+{
+    font-size:12px;
+    color:darkgray;
+}
+.btndetail
+{
+    margin-left:65px;
+    margin-top:20px
+}
+.mySlides {
+    display: none;
+    width: 1150px;
+    height: 400px;
+    margin-left: 50px;
+    margin-top:30px;
+}
+.w3-content w3-section
+{
+    margin-left:50px;
+
 }

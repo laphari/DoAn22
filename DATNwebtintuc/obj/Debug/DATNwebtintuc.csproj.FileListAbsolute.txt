@@ -84,3 +84,4 @@ C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.init.resources
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.csproj.GenerateResource.cache
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.ad.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addstickypost.resources

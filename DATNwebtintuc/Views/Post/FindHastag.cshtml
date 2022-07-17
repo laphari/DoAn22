@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DATNwebtintuc.Models.ModelRespon.HastagRespon>
+@{
+    ViewBag.Title = "FindHastag";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<p class="hastags-chutieude">#@ViewBag.keyword</p>
+
+@if(@Model == null){
+
+
+<h3>HASTAG KHOONG TON TAI</h3>
+            }
+            else
+            {
+<div>
+    @foreach (var item in Model)
+    {
+        <div class="hastags-content">
+            <div class="hastags-img">
+                <a href="/Post/Detail?id=@item.post_id"><img class="hastags-imglink" src="@item.post_teaser" /></a>
+            </div>
+            <div>
+                <div class="hastags-chu">
+                    <a href="/Post/Detail?id=@item.post_id">@item.post_title</a>
+                </div>
+                <div class="hastag-ngaytao">
+                    <i class="fa-solid fa-calendar"> @item.create_date</i>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+            }

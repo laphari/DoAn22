@@ -18,6 +18,7 @@ namespace DATNwebtintuc.Models.ModelRequest
         public DateTime create_date { get; set; }//ngay tao
         public DateTime edit_date { get; set; }// ngay sua
         public string IDcategory { get; set; }
-        
+        public int? stickypost { get; set; }
+
     }
 }

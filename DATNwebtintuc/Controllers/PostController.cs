@@ -62,11 +62,10 @@ namespace DATNwebtintuc.Controllers
             return View();
         }
         [ValidateInput(false)]
-        public ActionResult Create(PostRequest item , string seriesID,string idStickyPosts) 
+        public ActionResult Create(PostRequest item , string seriesID) 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
             ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();
-            ViewData["selectstickpost"] = data.StickyPostss.Where(x => x.post_id == null).ToList(); ;
             PostRequestValidator validator = new PostRequestValidator();
             var result = validator.Validate(item);
             if (!result.IsValid)
@@ -82,8 +81,9 @@ namespace DATNwebtintuc.Controllers
                 entitypost.post_review = item.post_review;
                 entitypost.post_content = item.post_content;
                 entitypost.post_slug = item.post_slug;
-                entitypost.post_tag = item.post_tag;
+                entitypost.post_tag =  string.Join("", item.post_tag.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
                 entitypost.IDcategory = item.IDcategory;
+                entitypost.stickypost = item.stickypost;
                 if (item.post_teaser == null)
                 {
                     entitypost.post_teaser = "../UploadPost/logoweb.jpg";
@@ -96,7 +96,7 @@ namespace DATNwebtintuc.Controllers
                 entitypost.post_title = item.post_title;
                 entitypost.create_date = item.create_date;
                 data.Posts.Add(entitypost);
-                if(seriesID == "" && idStickyPosts == "") //mk k chon cai gi
+                if(seriesID == "") //mk k chon cai gi
                 {
                     data.SaveChanges();
                     return RedirectToAction("Index", new { create = true });
@@ -118,42 +118,21 @@ namespace DATNwebtintuc.Controllers
                             data.Entry(Findseriesid).State = EntityState.Modified;
                         }
                     }
-
-                    if(idStickyPosts != "") 
-                    {
-                        var Stickypostid = data.StickyPostss.Find(idStickyPosts);
-                        if(Stickypostid.post_id != null) 
-                        {
-                            ViewData["sentmessstick"] = "The post already exists";
-                            return View("Viewcreate");
-                        }
-                        else 
-                        {
-                            Stickypostid.post_id = entitypost.post_id;
-                            data.Entry(Stickypostid).State = EntityState.Modified;
-                        }
-                    }
                     data.SaveChanges();
                     return RedirectToAction("Index", new { create = true });
                 }
             }
         }
         [ValidateInput(false)]
-        public ActionResult Viewupdate(string id, string seriesID, string idStickyPosts) //dau vao la id 
+        public ActionResult Viewupdate(string id, string seriesID) //dau vao la id 
         {
             var update = data.Posts.Find(id);// dau du lieu o trong bang post
             ViewData["selectcategory"] = data.Categories.ToList();
-            var updatestickypost = data.StickyPostss.Where(x => x.post_id == id).FirstOrDefault();
             var updateseries = data.Seriess.Where(x => x.post_id==id).FirstOrDefault();//lay ra danh sach ma series dc phep gan cho bai post 
             ViewData["selectseriesed"] = data.Seriess.Where(x => x.post_id == null).ToList();
-            ViewData["selectstickyposted"] = data.StickyPostss.Where(x => x.post_id == null).ToList();
-            if (updateseries != null) 
+            
             {
                 ViewData["selectseries"] = updateseries;
-            }
-            if(updatestickypost != null)
-            {
-                ViewData["selectstickypost"] = updatestickypost;
             }
             return View(update);// dau ra la mot object
         }
@@ -162,7 +141,6 @@ namespace DATNwebtintuc.Controllers
         {
             ViewData["selectcategory"] = data.Categories.ToList(); // not null 
             ViewData["selectseriesed"] = data.Seriess.Where(x => x.post_id == null).ToList(); // allow null 
-            ViewData["selectstickyposted"] = data.StickyPostss.Where(x => x.post_id == null).ToList(); // allow null 
                 var entitypost = new Post();
                 entitypost.post_id = item.post_id;
                 entitypost.post_review = item.post_review;
@@ -181,6 +159,7 @@ namespace DATNwebtintuc.Controllers
                 entitypost.post_title = item.post_title;
                 entitypost.create_date = item.create_date;
                 entitypost.edit_date = item.edit_date;
+                entitypost.stickypost = item.stickypost;
                 if (seriesID != "") 
                 {
                     // tim no
@@ -204,29 +183,6 @@ namespace DATNwebtintuc.Controllers
                         {
                             updateSeries.post_id = item.post_id;
                             data.Entry(updateSeries).State = EntityState.Modified;
-                        }
-                    }
-                }
-                if(idStickyPosts != "") 
-                {
-                    var findidstickypost = data.StickyPostss.Where(x => x.post_id == item.post_id).FirstOrDefault();
-                    if(findidstickypost != null) 
-                    {
-                        data.StickyPostss.Remove(findidstickypost);
-                        var updatestickypost = data.StickyPostss.Find(idStickyPosts);
-                        if(updatestickypost.post_id == null) 
-                        {
-                            updatestickypost.post_id = item.post_id;
-                            data.Entry(updatestickypost).State = EntityState.Modified;
-                        }
-                    }
-                    else 
-                    {
-                        var updateStickyPost = data.StickyPostss.Find(idStickyPosts);
-                        if (updateStickyPost.post_id == null)
-                        {
-                            updateStickyPost.post_id = item.post_id;
-                            data.Entry(updateStickyPost).State = EntityState.Modified;
                         }
                     }
                 }
@@ -294,9 +250,29 @@ namespace DATNwebtintuc.Controllers
         public ActionResult Detail(string id) 
         {
             ViewData["advertismentimage"] = data.Advertisements.Where(x => x.typeAdvertisement == "Image").Take(6).ToList();
-            var detail = data.Posts.Find(id);
+            var detail = data.Posts.Find(id);//tim id chi tiet cua bai viet
+            var stringhastags = "#";//cat hastags thanh mot mang keyword
+            var hastags = stringhastags.ToCharArray();// cai list hastags ra thanh mot mang keyword
+            var listTag = detail.post_tag.Trim().Split(hastags);//loai khoang trang
+            ViewData["gethastags"] = listTag;
+            detail.ViewCount = detail.ViewCount + 1;
+            data.Entry(detail).State = EntityState.Modified;
+            data.SaveChanges();
             ViewData["selectpostanddetail"] = data.Posts.OrderByDescending(x => x.create_date).Take(3).ToList();
             return View(detail);
+        }
+        public ActionResult FindHastag(string keyWord)
+        {
+            ViewBag.keyword = keyWord;//gan cai keyword nguoi ta tim ra ngoai
+            var listFindHastag = data.Posts.Where(x => x.post_title.ToUpper().Contains(keyWord.ToUpper())).Select((x) => new HastagRespon//contains dung de so sanh gan dung
+            {
+                post_id = x.post_id,
+                post_teaser = x.post_teaser ,
+                post_title = x.post_title , 
+                create_date = x.create_date , 
+                name_category = x.Category.namecategory
+            }).ToList();
+            return View(listFindHastag);//vi muon tra ve cai listfindhastags
         }
     }
 }

@@ -23,6 +23,7 @@ namespace DATNwebtintuc.Models.ModelEntity
         public string post_review { get; set; }// review bai viet
         public string post_content { get; set; }// noi dung cua bai dang
         public string post_tag { get; set; }// gan the bai viet
+        public int? stickypost { get; set;}
         public DateTime? create_date { get; set; }//ngay tao
         public DateTime? edit_date { get; set; }// ngay sua
         public int ViewCount { get; set; }// so luong nguoi xem

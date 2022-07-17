@@ -10,5 +10,6 @@ namespace DATNwebtintuc.Models.ModelRespon
         public string post_id { get; set; }
         public string post_title { get; set; }
         public string post_teaser { get; set; }
+
     }
 }

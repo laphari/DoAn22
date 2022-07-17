@@ -148,6 +148,10 @@
     <Compile Include="Migrations\202206130720465_ad.Designer.cs">
       <DependentUpon>202206130720465_ad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207030803484_addstickypost.cs" />
+    <Compile Include="Migrations\202207030803484_addstickypost.Designer.cs">
+      <DependentUpon>202207030803484_addstickypost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelEntity\Account.cs" />
     <Compile Include="Models\ModelEntity\Advertisement.cs" />
@@ -167,6 +171,7 @@
     <Compile Include="Models\ModelRequest\ResetPasswordRequest.cs" />
     <Compile Include="Models\ModelRequest\SeriesRequest.cs" />
     <Compile Include="Models\ModelRequest\TagsRequest.cs" />
+    <Compile Include="Models\ModelRespon\HastagRespon.cs" />
     <Compile Include="Models\ModelRespon\JoinPostandStickypost.cs" />
     <Compile Include="Models\ModelRespon\PostandCategory.cs" />
     <Compile Include="Models\ModelRespon\Postanddetail.cs" />
@@ -2631,6 +2636,9 @@
     <Content Include="Views\Home\Categoriesentertainment.cshtml" />
     <Content Include="Views\Home\Categoriescar.cshtml" />
     <Content Include="Views\Home\Categoriestechnology.cshtml" />
+    <Content Include="Views\Home\Hastags.cshtml" />
+    <Content Include="Views\Shared\_LayoutSlide.cshtml" />
+    <Content Include="Views\Post\FindHastag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2657,6 +2665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206130720465_ad.resx">
       <DependentUpon>202206130720465_ad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207030803484_addstickypost.resx">
+      <DependentUpon>202207030803484_addstickypost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

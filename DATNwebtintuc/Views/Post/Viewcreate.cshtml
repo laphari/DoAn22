@@ -97,12 +97,11 @@
         <br />
         <label>Ưu tiên</label>
         <br />
-        <select name="idStickyPosts" class="form-control">
-            <option value="" selected>-------Lựa chọn stickpost-------</option>
-            @foreach (var item in @ViewData["selectstickpost"] as List<DATNwebtintuc.Models.ModelEntity.StickyPosts>)
-            {
-                    <option value="@item.idStickyPosts">@item.priority</option>
-            }
+        <select name="stickypost" class="form-control">
+            <option value="1" selected> Ưu tiên 1</option>
+            <option value="2" selected> Ưu tiên 2</option>
+            <option value="3" selected> Ưu tiên 3</option>
+            <option value="" selected class="">-------Lựa chọn stickpost-------</option>
         </select>
         <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
