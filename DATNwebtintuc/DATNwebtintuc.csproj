@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
@@ -152,10 +153,32 @@
     <Compile Include="Migrations\202207030803484_addstickypost.Designer.cs">
       <DependentUpon>202207030803484_addstickypost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208031435175_addcomment.cs" />
+    <Compile Include="Migrations\202208031435175_addcomment.Designer.cs">
+      <DependentUpon>202208031435175_addcomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208031514336_addcommentlan2.cs" />
+    <Compile Include="Migrations\202208031514336_addcommentlan2.Designer.cs">
+      <DependentUpon>202208031514336_addcommentlan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208061427417_addcmt.cs" />
+    <Compile Include="Migrations\202208061427417_addcmt.Designer.cs">
+      <DependentUpon>202208061427417_addcmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208091443300_addgender.cs" />
+    <Compile Include="Migrations\202208091443300_addgender.Designer.cs">
+      <DependentUpon>202208091443300_addgender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208140414364_addauthor.cs" />
+    <Compile Include="Migrations\202208140414364_addauthor.Designer.cs">
+      <DependentUpon>202208140414364_addauthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\ModelEntity\Account.cs" />
     <Compile Include="Models\ModelEntity\Advertisement.cs" />
     <Compile Include="Models\ModelEntity\Category.cs" />
+    <Compile Include="Models\ModelEntity\Comment.cs" />
     <Compile Include="Models\ModelEntity\DATNwebtintuc.cs" />
     <Compile Include="Models\ModelEntity\Maihelper.cs" />
     <Compile Include="Models\ModelEntity\Post.cs" />
@@ -2639,6 +2662,7 @@
     <Content Include="Views\Home\Hastags.cshtml" />
     <Content Include="Views\Shared\_LayoutSlide.cshtml" />
     <Content Include="Views\Post\FindHastag.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2668,6 +2692,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207030803484_addstickypost.resx">
       <DependentUpon>202207030803484_addstickypost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031435175_addcomment.resx">
+      <DependentUpon>202208031435175_addcomment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031514336_addcommentlan2.resx">
+      <DependentUpon>202208031514336_addcommentlan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208061427417_addcmt.resx">
+      <DependentUpon>202208061427417_addcmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208091443300_addgender.resx">
+      <DependentUpon>202208091443300_addgender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208140414364_addauthor.resx">
+      <DependentUpon>202208140414364_addauthor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

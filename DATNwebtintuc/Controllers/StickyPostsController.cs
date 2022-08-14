@@ -48,6 +48,7 @@ namespace DATNwebtintuc.Controllers
         {
             var remove = data.StickyPostss.Find(id);
             data.StickyPostss.Remove(remove);
+
             data.SaveChanges();
             return RedirectToAction("Index", new { delete = true });
         }
@@ -56,13 +57,14 @@ namespace DATNwebtintuc.Controllers
             var update = data.StickyPostss.Find(id);
             return View(update);
         }
-        public ActionResult Update(StickyPosts item) 
+        public ActionResult Update(StickyPosts item,int id) 
         {
             var entitysticky = new StickyPosts();
             entitysticky.idStickyPosts = item.idStickyPosts;
             entitysticky.priority = item.priority;
             data.Entry(entitysticky).State = EntityState.Modified;
             data.SaveChanges();
+            //var Search = data.StickyPostss.Where(x => x.priority == id);
             return RedirectToAction("Index", new { update = true });
         }
     }

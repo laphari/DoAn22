@@ -57,6 +57,7 @@ namespace DATNwebtintuc.Controllers
                 entityAccount.Username = item.Username;
                 entityAccount.Email = item.Email;
                 entityAccount.password = item.password;
+                entityAccount.userrole = item.userrole;
                 if(item.Image == null) 
                 {
                     entityAccount.Image = "../Uploadimg/Anhhanoi.jpg";
@@ -96,7 +97,8 @@ namespace DATNwebtintuc.Controllers
                     FormsAuthentication.SetAuthCookie(item.Username, true);
                     Session["username"] = rel.Username;
                     Session["Avata"] = rel.Image;
-                    return RedirectToAction("Index", "Category");
+                    Session["Role"] = rel.userrole;
+                    return RedirectToAction("Index", "Post");
                 }
                 else 
                 {

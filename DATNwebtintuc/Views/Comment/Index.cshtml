@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DATNwebtintuc.Models.ModelEntity.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+    var validate = ViewData["checkdelte"];
+}
+
+<h2>Index</h2>
+
+<div class="container mt-3">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bình Luận</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.commentContent</td>
+
+                    <td>
+                        <a href="/Comment/Remove?id=@item.commentID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

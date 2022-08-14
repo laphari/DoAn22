@@ -85,3 +85,8 @@ C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.csproj.GenerateResource.cache
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.ad.resources
 C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addstickypost.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addcomment.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addcommentlan2.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addcmt.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addgender.resources
+C:\Users\LAP DZ\source\repos\DATNwebtintuc\DATNwebtintuc\obj\Debug\DATNwebtintuc.Migrations.addauthor.resources

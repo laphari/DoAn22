@@ -13,6 +13,7 @@ namespace DATNwebtintuc.Models.ModelEntity
             TBL_Tags = new HashSet<Tags>();
             TBL_StickyPosts = new HashSet<StickyPosts>();
             Tbl_Series = new HashSet<Series>();
+            Tbl_Comment = new HashSet<Comment>();
             this.post_id = Guid.NewGuid().ToString();
         }
         [Key]
@@ -32,10 +33,12 @@ namespace DATNwebtintuc.Models.ModelEntity
         public bool status { get; set; } // trang thai bai dang
         public string IDcategory { get; set; }
         public string IDaccount { get; set; }
+        public string AuthorName { get; set;}
         public virtual Account Account { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Tags> TBL_Tags { get; set; }
         public virtual ICollection<StickyPosts> TBL_StickyPosts { get; set; }
         public virtual ICollection<Series> Tbl_Series { get; set; }
+        public virtual ICollection<Comment> Tbl_Comment { get; set; }
     }
 }

@@ -6,6 +6,7 @@
     var getimgadvertisment = ViewData["advertismentimage"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
     var getvideoadvertisment = ViewData["advertismentvideo"] as List<DATNwebtintuc.Models.ModelEntity.Advertisement>;
     var gettinmoi = ViewData["PostandSticky"] as List<DATNwebtintuc.Models.ModelEntity.Post>;
+    var gettinslide = ViewData["PostandStickyslide"] as List<DATNwebtintuc.Models.ModelEntity.Post>;
     var getxahoi = ViewData["PostandCategory "] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
     var getphapluat = ViewData["PostandCategoryphapluat"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
     var getkinhdoanh1 = ViewData["PostandCategorykinhdoanh"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
@@ -24,17 +25,17 @@
     var getcongnghe1 = ViewData["PostandCategorycongnghe1"] as List<DATNwebtintuc.Models.ModelRespon.PostandCategory>;
 }
 <div>
-    @foreach (var item in gettinmoi)
+    @foreach (var item in gettinslide)
     {
     <div class="w3-content w3-section" style="position:relative">
         <a href="/Post/Detail?id=@item.post_id"><img class="mySlides" src="@item.post_teaser" ></a>
-        <h1 style="position:absolute;top:10%;left:20%;color:white" class="myTitle">@item.post_title</h1>
+        <a href="/Post/Detail?id=@item.post_id" class="myTitle"><h1>"@item.post_title"</h1></a>
     </div>
     }
 </div>
 <div>
     <div class="chutinmoi">
-        <p>TIN MỚI</p>
+        <p>NỔI BẬT</p>
     </div>
     <div class="mau">
 
@@ -698,6 +699,6 @@
         if (myIndex > x.length) { myIndex = 1 }
         x[myIndex - 1].style.display = "block";
         y[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 6000); // Change image every 2 seconds
+        setTimeout(carousel, 4000); // Change image every 2 seconds
     }
 </script>

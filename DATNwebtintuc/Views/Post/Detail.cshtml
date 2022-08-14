@@ -6,11 +6,13 @@
     var getbaivietganday = ViewData["selectpostanddetail"] as List<DATNwebtintuc.Models.ModelEntity.Post>;
     var gethastagdetail = ViewData["gethastags"] as Array;
     var getcount = ViewData["Viewcount"];
+    var getcomment = ViewData["FindIdPostcomment"] as List<DATNwebtintuc.Models.ModelEntity.Comment>;
+    var getnameseries = ViewData["nameseries"] as DATNwebtintuc.Models.ModelEntity.Series;
 }
 
 <div class="trangchudetail">
     <div class="chutrangchu">
-        <a href="/Home/Index">Trang chủ ></a>
+        <a href="/Home/Index">Trang chủ @Model.Account></a>
     </div>
     <div class="theloaitrangdetail">
         <p>@Model.Category.namecategory</p>
@@ -19,7 +21,14 @@
 
 <div class="post-title-to">
     <div class="post-title">
-        <h2>"@Model.post_title"</h2>
+        @if (getnameseries == null)
+        {
+            <h2>"@Model.post_title"</h2>
+        }
+        else
+        {
+            <h2>"@Model.post_title"(@getnameseries.seriesName)</h2>
+        }
     </div>
     <div class="baivietganday">
         <div class="chuganday">
@@ -73,25 +82,98 @@
 
 </div>
 
-
-
-
-@{
-    if (gethastagdetail.Length <= 0)
-    {
-
-
-        <h4>không có hastag</h4>
-    }
-    else
-    {
-        foreach (var item in gethastagdetail)
+<div class="hastagsto">
+    @{
+        if (gethastagdetail.Length <= 0)
         {
-            if (item.ToString() != "")
+
+
+            <h4>không có hastag</h4>
+        }
+        else
+        {
+            foreach (var item in gethastagdetail)
             {
-                <a href="/Post/FindHastag?keyWord=@item" class="btn btn-outline-dark btn-sm btndetail">#@item</a>
+                if (item.ToString() != "")
+                {
+                    <a href="/Post/FindHastag?keyWord=@item" class="btn btn-outline-dark btn-sm btndetail">#@item</a>
+                }
             }
         }
-    }
 
-}
+    }
+</div>
+
+<div class="comment">
+    <form action="/Comment/Savecomment">
+        <div class="comment-1">
+            <div class="comment-1i">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="comment-1-input">
+                <input type="text" placeholder="Nhập tên" name="nameuser" />
+                <input name="IDpost" value="@Model.post_id" readonly hidden />
+            </div>
+        </div>
+        <div class="comment-1">
+            <div class="comment-1i">
+                <i class="fas fa-restroom"></i>
+            </div>
+            <div class="comment-1-input">
+                <select class="form-select" aria-label="Default select example" name="usergender">
+                    <option selected>Chọn giới tính</option>
+                    <option value="Man">Nam</option>
+                    <option value="Woman">Nữ</option>
+                </select>
+                <input name="IDpost" value="@Model.post_id" readonly hidden />
+            </div>
+        </div>
+        <div class="comment-2">
+            <div class="comment-2i">
+                <i class="fas fa-comment-alt"></i>
+            </div>
+            <div class="comment-2-textarea">
+                <textarea name="nameusercomment"></textarea>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-primary btn-sm btnsendcomment">Gửi bình luận</button>
+        </div>
+    </form>
+</div>
+
+<div class="fromcomment">
+    <div class="fromcomment-i">
+        <i class="fas fa-comment"> Bình Luận</i>
+    </div>
+    @foreach (var item in getcomment)
+    {
+        <div class="cmtload">
+            <div class="cmtloadimg">
+                @if (item.gender == "0")
+                {
+                    <img src="https://st.quantrimang.com/photos/image/072015/22/avatar.jpg" />
+                }
+                else
+                {
+                    <img src="https://i.pinimg.com/originals/7d/8e/f4/7d8ef4943c758918490a63afa3a5d65d.png" />
+                }
+            </div>
+            <div>
+                <div class="cmtcmtuser">
+                    <div class="cmtinput">
+                        <p>@item.commentName</p>
+                    </div>
+                    <div class="cmtinputcontent">
+                        <p>@item.commentContent</p>
+                    </div>
+                    <div class="cmtinputcoment">
+                        <p>@item.dateComment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+  
+</div>
+

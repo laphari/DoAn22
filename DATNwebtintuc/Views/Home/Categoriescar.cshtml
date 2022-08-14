@@ -1,7 +1,9 @@
-﻿
+﻿@model List<DATNwebtintuc.Models.ModelEntity.Post>
 @{
     ViewBag.Title = "Categoriescar";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    var totallpagesize = int.Parse(ViewData["totallpagecar"].ToString());
+    var countOfNumberData = Model.Count();
 }
 <div class="theme1">
     <div class="hometheme">
@@ -19,55 +21,78 @@
 </div>
 <div class="img-content">
     <div>
-        <div class="img-content1">
-            <div class="img-content-img">
-                <a href="d"><img class="img-content-imglink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/04/14/sang-1649923816319.jpeg" /></a>
+        @if (countOfNumberData > 1)
+        {
+            <div class="img-content1">
+                <div class="img-content-img">
+                    <a href="/Post/Detail?id=@Model[0].post_id"><img class="img-content-imglink" src="@Model[0].post_teaser" /></a>
+                </div>
+                <div class="img-content-chu">
+                    <a href="/Post/Detail?id=@Model[0].post_id">@Model[0].post_title</a>
+                </div>
+                <div class="img-content-ngay">
+                    <p>@Model[0].create_date</p>
+                </div>
             </div>
-            <div class="img-content-chu">
-                <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-            </div>
-            <div class="img-content-ngay">
-                <p>HN NEWS 05-11-2022</p>
-            </div>
-        </div>
+        }
+
     </div>
     <div>
         <div>
+
             <div class="img-content2">
                 <div>
-                    <div class="img-content2-con">
-                        <a href="d"><img class="img-content2-conlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/04/14/sang-1649923816319.jpeg" /></a>
-                    </div>
-                    <div class="img-content2-chu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
+                    @if (countOfNumberData > 2)
+                    {
+                        <div class="img-content2-con">
+                            <a href="/Post/Detail?id=@Model[1].post_id"><img class="img-content2-conlink" src="@Model[1].post_teaser" /></a>
+                        </div>
+                        <div class="img-content2-chu">
+                            <a href="/Post/Detail?id=@Model[1].post_id">@Model[1].post_title</a>
+                        </div>
+                    }
                 </div>
+
                 <div>
-                    <div class="img-content2-con">
-                        <a href="d"><img class="img-content2-conlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/04/14/sang-1649923816319.jpeg" /></a>
-                    </div>
-                    <div class="img-content2-chu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
+                    @if (countOfNumberData > 3)
+                    {
+                        <div class="img-content2-con">
+                            <a href="/Post/Detail?id=@Model[2].post_id"><img class="img-content2-conlink" src="@Model[2].post_teaser" /></a>
+                        </div>
+                        <div class="img-content2-chu">
+                            <a href="/Post/Detail?id=@Model[2].post_id">@Model[2].post_title</a>
+                        </div>
+                    }
                 </div>
             </div>
+
+
             <div class="img-content2">
+
                 <div>
-                    <div class="img-content2-con">
-                        <a href="d"><img class="img-content2-conlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/04/14/sang-1649923816319.jpeg" /></a>
-                    </div>
-                    <div class="img-content2-chu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
+                    @if (countOfNumberData > 4)
+                    {
+                        <div class="img-content2-con">
+                            <a href="/Post/Detail?id=@Model[3].post_id"><img style="margin-top:19px;"  class="img-content2-conlink" src="@Model[3].post_teaser" /></a>
+                        </div>
+                        <div class="img-content2-chu">
+                            <a href="/Post/Detail?id=@Model[3].post_id">@Model[3].post_title</a>
+                        </div>
+                    }
                 </div>
+
                 <div>
-                    <div class="img-content2-con">
-                        <a href="d"><img class="img-content2-conlink" src="https://icdn.dantri.com.vn/thumb_w/770/2022/04/14/sang-1649923816319.jpeg" /></a>
-                    </div>
-                    <div class="img-content2-chu">
-                        <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                    </div>
+                    @if (countOfNumberData > 5)
+                    {
+                        <div class="img-content2-con">
+                            <a href="/Post/Detail?id=@Model[4].post_id"><img style="margin-top:19px;"  class="img-content2-conlink" src="@Model[4].post_teaser" /></a>
+                        </div>
+                        <div class="img-content2-chu">
+                            <a href="/Post/Detail?id=@Model[4].post_id">@Model[4].post_title</a>
+                        </div>
+                    }
                 </div>
+
             </div>
         </div>
     </div>
@@ -80,57 +105,79 @@
             <div>
                 <div class="img-content2-duoi">
                     <div class="img-content2-1">
-                        <div class="img-content2-duoi-img">
-                            <a href="d"><img class="img-content2-duoi-conlink" src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/19/q3-3-1655650488298353787008.jpg" /></a>
-                        </div>
-                        <div class="img-content2-duoi-chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div class="img-content-duoi-ngay">
-                            <p>HN NEWS 05-11-2022</p>
-                        </div>
+                        @if (countOfNumberData > 6)
+                        {
+                            <div class="img-content2-duoi-img">
+                                <a href="/Post/Detail?id=@Model[5].post_id"><img class="img-content2-duoi-conlink" src="@Model[5].post_teaser" /></a>
+                            </div>
+                            <div class="img-content2-duoi-chu">
+                                <a href="/Post/Detail?id=@Model[5].post_id">@Model[5].post_title</a>
+                            </div>
+                            <div class="img-content-duoi-ngay">
+                                <p>@Model[5].create_date</p>
+                            </div>
+                        }
                     </div>
 
                     <div class="img-content2-1">
-                        <div class="img-content2-duoi-img">
-                            <a href="d"><img class="img-content2-duoi-conlink" src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/19/q3-3-1655650488298353787008.jpg" /></a>
-                        </div>
-                        <div class="img-content2-duoi-chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div class="img-content-duoi-ngay">
-                            <p>HN NEWS 05-11-2022</p>
-                        </div>
+                        @if (countOfNumberData > 7)
+                        {
+                            <div class="img-content2-duoi-img">
+                                <a href="/Post/Detail?id=@Model[6].post_id"><img class="img-content2-duoi-conlink" src="@Model[6].post_teaser" /></a>
+                            </div>
+                            <div class="img-content2-duoi-chu">
+                                <a href="/Post/Detail?id=@Model[6].post_id">@Model[6].post_title</a>
+                            </div>
+                            <div class="img-content-duoi-ngay">
+                                <p>@Model[6].create_date</p>
+                            </div>
+                        }
                     </div>
+                </div>
+            </div>
+            <div>
+
+                <div class="img-content2-duoi">
+                    <div class="img-content2-1">
+                        @if (countOfNumberData > 8)
+                        {
+                            <div class="img-content2-duoi-img">
+                                <a href="/Post/Detail?id=@Model[7].post_id"><img class="img-content2-duoi-conlink" src="@Model[7].post_teaser" /></a>
+                            </div>
+                            <div class="img-content2-duoi-chu">
+                                <a href="/Post/Detail?id=@Model[7].post_id">@Model[7].post_title</a>
+                            </div>
+                            <div class="img-content-duoi-ngay">
+                                <p>@Model[7].create_date</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="img-content2-1">
+                        @if (countOfNumberData >= 9)
+                        {
+                            <div class="img-content2-duoi-img">
+                                <a href="/Post/Detail?id=@Model[8].post_id"><img class="img-content2-duoi-conlink" src="@Model[8].post_teaser" /></a>
+                            </div>
+                            <div class="img-content2-duoi-chu">
+                                <a href="/Post/Detail?id=@Model[8].post_id">@Model[8].post_title</a>
+                            </div>
+                            <div class="img-content-duoi-ngay">
+                                <p>@Model[8].create_date</p>
+                            </div>
+                        }
+                    </div>
+
                 </div>
             </div>
 
             <div>
-                <div class="img-content2-duoi">
-                    <div class="img-content2-1">
-                        <div class="img-content2-duoi-img">
-                            <a href="d"><img class="img-content2-duoi-conlink" src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/19/q3-3-1655650488298353787008.jpg" /></a>
-                        </div>
-                        <div class="img-content2-duoi-chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div class="img-content-duoi-ngay">
-                            <p>HN NEWS 05-11-2022</p>
-                        </div>
-                    </div>
+                <ul class="pagination" style="margin-left:68%;margin-top:40px">
+                    @for (var i = 1; i <= totallpagesize; i++)
+                    {
+                        <li class="page-item"><a class="page-link  bg-lightblue" href="/Home/Categoriescar?page=@i">@i</a></li>
+                    }
 
-                    <div class="img-content2-1">
-                        <div class="img-content2-duoi-img">
-                            <a href="d"><img class="img-content2-duoi-conlink" src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/6/19/q3-3-1655650488298353787008.jpg" /></a>
-                        </div>
-                        <div class="img-content2-duoi-chu">
-                            <a href="d">Bộ Chính trị triệu tập Hội nghị Trung ương bất thường Ông Trần Quang Phương đưa ra thông báo trên khi mở đầu phiên làm việc tại hội trường ..</a>
-                        </div>
-                        <div class="img-content-duoi-ngay">
-                            <p>HN NEWS 05-11-2022</p>
-                        </div>
-                    </div>
-                </div>
+                </ul>
             </div>
         </div>
 
@@ -150,4 +197,3 @@
 
     </div>
 </div>
-

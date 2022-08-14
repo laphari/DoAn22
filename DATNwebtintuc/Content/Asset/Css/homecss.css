@@ -943,7 +943,7 @@ body {
 .img-content2-con 
 {
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 28px;
 }
 .img-content2-conlink
 {
@@ -1305,6 +1305,10 @@ body {
 {
     display:flex;
 }
+.hastagsto
+{
+    margin-top:-20px;
+}
 .hastags-chu {
     margin-top: 40px;
     margin-left: 10px;
@@ -1333,12 +1337,127 @@ body {
 .mySlides {
     display: none;
     width: 1150px;
-    height: 400px;
+    height: 510px;
     margin-left: 50px;
     margin-top:30px;
 }
 .w3-content w3-section
 {
     margin-left:50px;
-
+}
+.myTitle>h1
+{
+    margin-left: 50px;
+    margin-top: -30px;
+    font-size: 25px;
+    color:white;
+}
+.myTitle 
+{
+    text-decoration: none;
+}
+.comment
+{
+    margin-top:20px;
+    margin-left:65px;
+    background-color:lightcyan;
+    width:680px;
+    
+}
+.comment-1 
+{
+    display: flex;
+}
+.comment-1i > i {
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 30px;
+    color: #1D8FBD;
+}
+.comment-2i > i {
+    margin-left: 30px;
+    margin-top: 6px;
+    font-size: 28px;
+    color: #1D8FBD;
+}
+.comment-1-input 
+{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.comment-1-input>input
+{
+    width:180px;
+    height:33px;
+    border-color: #1D8FBD;
+    outline:none;
+}
+.comment-2-textarea 
+{
+    margin-left: 38px;
+}
+.comment-2-textarea>input {
+  background-color:aliceblue
+}
+.comment-2 {
+    margin-top: 20px;
+    display: flex;
+}
+.btnsendcomment
+{
+    margin-left:180px;
+    margin-top:10px;
+}
+.fromcomment 
+{
+    margin-top: 30px;
+    margin-left: 60px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    width:685px;
+}
+.fromcomment-i > i {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.cmtload
+{
+    display:flex;
+}
+.cmtloadimg>img
+{
+    margin-left: 30px;
+    width:60px;
+    height:40px;
+    margin-top:20px;
+    border-radius:50px;
+}
+.cmtinput 
+{
+    margin-left: 20px;
+    margin-top:22px;
+}
+.cmtinputcontent 
+{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.cmtinputcoment 
+{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.cmtinput > p {
+    padding-top: 5px;
+}
+.cmtinputcoment>p
+{
+    font-size:12px;
+}
+.cmtcmtuser {
+    background-color: antiquewhite;
+    margin-left: 20px;
+    width: 210px;
+    border-radius: 30px;
 }

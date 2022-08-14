@@ -54,14 +54,16 @@ namespace DATNwebtintuc.Controllers
             return View(result.OrderByDescending(x => x.create_date).ToList());
         }
         [ValidateInput(false)]
+        [Authorize(Roles ="Admin")]
         public ActionResult Viewcreate() 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
             ViewData["selectstickpost"] = data.StickyPostss.Where(x => x.post_id == null).ToList();
             ViewData["selectseries"] = data.Seriess.Where(x => x.post_id == null).ToList();
-            return View();
+            return View();// khi ma giao dien load len can du lieu tra ve
         }
         [ValidateInput(false)]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(PostRequest item , string seriesID) 
         {
             ViewData["selectcategory"] = data.Categories.ToList();
@@ -72,7 +74,7 @@ namespace DATNwebtintuc.Controllers
             {
                 {
                     ViewData["checkvalidatepost"] = (result.Errors);
-                    return View("Viewcreate");//chua fix
+                    return View("Viewcreate");
                 }
             }
             else
@@ -103,11 +105,10 @@ namespace DATNwebtintuc.Controllers
                 }
                 else 
                 {
-
                     if(seriesID != "") // co gia tri
                     {
-                        var Findseriesid = data.Seriess.Find(seriesID);
-                        if(Findseriesid.post_id != null) 
+                        var Findseriesid = data.Seriess.Find(seriesID);//tim series
+                        if(Findseriesid.post_id != null)
                         {
                             ViewData["sentmessseries"] = "The post already exists";
                             return View("Viewcreate");
@@ -126,13 +127,13 @@ namespace DATNwebtintuc.Controllers
         [ValidateInput(false)]
         public ActionResult Viewupdate(string id, string seriesID) //dau vao la id 
         {
-            var update = data.Posts.Find(id);// dau du lieu o trong bang post
+            var update = data.Posts.Find(id);// find thong tin bai post thong qua id
             ViewData["selectcategory"] = data.Categories.ToList();
             var updateseries = data.Seriess.Where(x => x.post_id==id).FirstOrDefault();//lay ra danh sach ma series dc phep gan cho bai post 
             ViewData["selectseriesed"] = data.Seriess.Where(x => x.post_id == null).ToList();
             
             {
-                ViewData["selectseries"] = updateseries;
+                ViewData["selectseries"] = updateseries;// no gan vao update series de ti nua lay ra hien thi ra ben ngoai
             }
             return View(update);// dau ra la mot object
         }
@@ -160,11 +161,11 @@ namespace DATNwebtintuc.Controllers
                 entitypost.create_date = item.create_date;
                 entitypost.edit_date = item.edit_date;
                 entitypost.stickypost = item.stickypost;
-                if (seriesID != "") 
+              if (seriesID != "") 
                 {
                     // tim no
                     var findSeries = data.Seriess.Where(x => x.post_id == item.post_id).FirstOrDefault();// tim doi tuong
-                    if (findSeries != null)
+                    if (findSeries != null)// neu ma nguoi dung chon series
                     {
                         // xoa no
                         data.Seriess.Remove(findSeries);
@@ -231,6 +232,7 @@ namespace DATNwebtintuc.Controllers
         {
             var searchlower = search.ToLower();
             var result = data.Posts.Where(x => x.post_title.ToLower().Contains(searchlower)).ToList();
+            
             return View(result);
         }
         public string UploadPosttester(HttpPostedFileBase file)
@@ -247,18 +249,20 @@ namespace DATNwebtintuc.Controllers
             file.SaveAs(Server.MapPath(getfile));
             return getfile;
         }
-        public ActionResult Detail(string id) 
+        public ActionResult Detail(string id,int morecmt=1) 
         {
             ViewData["advertismentimage"] = data.Advertisements.Where(x => x.typeAdvertisement == "Image").Take(6).ToList();
             var detail = data.Posts.Find(id);//tim id chi tiet cua bai viet
             var stringhastags = "#";//cat hastags thanh mot mang keyword
             var hastags = stringhastags.ToCharArray();// cai list hastags ra thanh mot mang keyword
             var listTag = detail.post_tag.Trim().Split(hastags);//loai khoang trang
+            ViewData["nameseries"] = data.Seriess.Where(x => x.post_id == detail.post_id).FirstOrDefault();
             ViewData["gethastags"] = listTag;
             detail.ViewCount = detail.ViewCount + 1;
             data.Entry(detail).State = EntityState.Modified;
             data.SaveChanges();
             ViewData["selectpostanddetail"] = data.Posts.OrderByDescending(x => x.create_date).Take(3).ToList();
+            ViewData["FindIdPostcomment"] = data.Comments.Where(x => x.post_id == id).OrderByDescending(x => x.dateComment).ToList();
             return View(detail);
         }
         public ActionResult FindHastag(string keyWord)
