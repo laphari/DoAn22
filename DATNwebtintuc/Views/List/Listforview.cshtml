@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DATNwebtintuc.Models.ModelEntity.Post>
+@{
+    ViewBag.Title = "Listforview";
+    Layout = "~/Views/Shared/_AdminLTE3.cshtml";
+}
+
+<h2>Danh Sách Thống Kê Bài Đăng</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Tên Bài Viết</th>
+            <th scope="col">Người Tạo</th>
+            <th scope="col">Ngày Tạo</th>
+            <th scope="col">Ngày Sửa</th>
+            <th scope="col">Số Lượt Xem</th>
+            <th scope="col">Chi Tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>   
+            <td>@item.post_title.Substring(0, 10) ...</td>
+            <td>@(item.AuthorName == null? "Ẩn danh" : @item.AuthorName)</td>
+            <td>@item.create_date</td>
+            <td>@item.edit_date</td>
+            <td>@item.ViewCount</td>
+            <td><a href="/Post/Detail?id=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info-circle"></i></a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+

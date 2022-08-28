@@ -132,6 +132,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
     <Compile Include="Controllers\StickyPostsController.cs" />
@@ -172,6 +173,10 @@
     <Compile Include="Migrations\202208140414364_addauthor.cs" />
     <Compile Include="Migrations\202208140414364_addauthor.Designer.cs">
       <DependentUpon>202208140414364_addauthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208231533270_updatedb.cs" />
+    <Compile Include="Migrations\202208231533270_updatedb.Designer.cs">
+      <DependentUpon>202208231533270_updatedb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomRoleProvider.cs" />
@@ -2663,6 +2668,9 @@
     <Content Include="Views\Shared\_LayoutSlide.cshtml" />
     <Content Include="Views\Post\FindHastag.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\List\Listforview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2707,6 +2715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208140414364_addauthor.resx">
       <DependentUpon>202208140414364_addauthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208231533270_updatedb.resx">
+      <DependentUpon>202208231533270_updatedb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

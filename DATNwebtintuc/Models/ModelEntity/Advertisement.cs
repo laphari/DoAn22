@@ -16,5 +16,6 @@ namespace DATNwebtintuc.Models.ModelEntity
         public string idAdvertisement { get; set;}
         public string linkAdvertisement { get; set;}
         public string typeAdvertisement { get; set;}
+        public string urlAdvertisment { get; set;}
     }
 }

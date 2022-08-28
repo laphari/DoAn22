@@ -9,7 +9,7 @@
     var getcomment = ViewData["FindIdPostcomment"] as List<DATNwebtintuc.Models.ModelEntity.Comment>;
     var getnameseries = ViewData["nameseries"] as DATNwebtintuc.Models.ModelEntity.Series;
 }
-
+@*<p>@Model.AuthorName</p>*@
 <div class="trangchudetail">
     <div class="chutrangchu">
         <a href="/Home/Index">Trang chủ @Model.Account></a>
@@ -43,7 +43,7 @@
 
 <div class="time">
     <div class="time-hn">
-        <p>Bởi HNNEWS</p>
+        <p>Bởi @(Model.AuthorName != null?Model.AuthorName:"ADMIN HNNEWS")</p>
     </div>
     <div class="time-ngay">
         <i class="fa-solid fa-clock"> @Model.create_date</i>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="quangcao8">
-            <a href="d"><img class="quangcao8link" src="@getimgadvertisment[5].linkAdvertisement" /></a>
+            <a href="@getimgadvertisment[5].urlAdvertisment"><img class="quangcao8link" src="@getimgadvertisment[5].linkAdvertisement" /></a>
         </div>
     </div>
 

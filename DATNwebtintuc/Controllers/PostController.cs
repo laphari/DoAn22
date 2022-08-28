@@ -32,7 +32,7 @@ namespace DATNwebtintuc.Controllers
             {
                 ViewBag.Messdelete = true;
             }
-            var pagesize = 70;
+            var pagesize = 100;
             if(page == null) 
             {
                 page = 1;
@@ -86,6 +86,7 @@ namespace DATNwebtintuc.Controllers
                 entitypost.post_tag =  string.Join("", item.post_tag.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
                 entitypost.IDcategory = item.IDcategory;
                 entitypost.stickypost = item.stickypost;
+                entitypost.AuthorName = item.AuthorName;
                 if (item.post_teaser == null)
                 {
                     entitypost.post_teaser = "../UploadPost/logoweb.jpg";
@@ -124,6 +125,7 @@ namespace DATNwebtintuc.Controllers
                 }
             }
         }
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         public ActionResult Viewupdate(string id, string seriesID) //dau vao la id 
         {
@@ -137,6 +139,7 @@ namespace DATNwebtintuc.Controllers
             }
             return View(update);// dau ra la mot object
         }
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         public ActionResult Update(string post_teaser,PostRequest item, string seriesID,string idStickyPosts)
         {
@@ -161,6 +164,7 @@ namespace DATNwebtintuc.Controllers
                 entitypost.create_date = item.create_date;
                 entitypost.edit_date = item.edit_date;
                 entitypost.stickypost = item.stickypost;
+                entitypost.AuthorName = item.AuthorName;
               if (seriesID != "") 
                 {
                     // tim no
@@ -210,6 +214,7 @@ namespace DATNwebtintuc.Controllers
             {
                 
                 var seriResult = data.Seriess.Where(x=> x.post_id == postResult.post_id).FirstOrDefault();
+                //neu truong hop co ket noi voi bang khac check xem la co lien he gi k neu co thi xoa tung cai lien mot
                 var stickyResult = data.StickyPostss.Where(x => x.post_id == postResult.post_id).FirstOrDefault();
                 // nếu seriResult có giá trị => xóa bthg
                 // nếu ko có giá trị => lấy gì mà xóa 
@@ -232,7 +237,7 @@ namespace DATNwebtintuc.Controllers
         {
             var searchlower = search.ToLower();
             var result = data.Posts.Where(x => x.post_title.ToLower().Contains(searchlower)).ToList();
-            
+            // Whe
             return View(result);
         }
         public string UploadPosttester(HttpPostedFileBase file)

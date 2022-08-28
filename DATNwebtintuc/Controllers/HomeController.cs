@@ -40,6 +40,7 @@ namespace DATNwebtintuc.Controllers
                                            post_teaser = ps.post_teaser,
                                            post_title = ps.post_title,
                                            create_date = ps.create_date,
+                                           ViewCount = ps.ViewCount,
                                        };
             var queryPostandCategory2 = from ps in data.Posts
                                         join ca in data.Categories

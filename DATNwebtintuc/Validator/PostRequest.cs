@@ -12,6 +12,7 @@ namespace DATNwebtintuc.Validator
         public PostRequestValidator()
         {
             RuleFor(PostRequest => PostRequest.post_title).NotNull().WithMessage("Don't leave it blank");
+            RuleFor(PostRequest => PostRequest.AuthorName).NotNull().WithMessage("Don't leave it blank");
             RuleFor(PostRequest => PostRequest.post_slug).NotNull().WithMessage("Don't leave it blank");
             RuleFor(PostRequest => PostRequest.post_tag).NotNull().WithMessage("Don't leave it blank");
             RuleFor(PostRequest => PostRequest.create_date).NotNull().WithMessage("Don't leave it blank");

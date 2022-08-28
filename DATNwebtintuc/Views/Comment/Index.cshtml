@@ -4,9 +4,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLTE3.cshtml";
     var validate = ViewData["checkdelte"];
+    var getdetail = ViewData["sentdetail"];
 }
 
-<h2>Index</h2>
+<h2>Bình luận người dùng</h2>
 
 <div class="container mt-3">
 
@@ -22,8 +23,8 @@
             <tbody>
                 <tr>
                     <td>@item.commentContent</td>
-
                     <td>
+                        <a href="/Post/Detail?id=@item.post_id" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info-circle"></i></a>
                         <a href="/Comment/Remove?id=@item.commentID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>

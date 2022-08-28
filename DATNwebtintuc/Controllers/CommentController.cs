@@ -44,5 +44,11 @@ namespace DATNwebtintuc.Controllers
             data.SaveChanges();
             return RedirectToAction("Index", new { delete = true });
         }
+        public ActionResult Detail(string id) 
+        {
+            var detail = data.Comments.Find(id);
+            ViewData["sentdetail"] = detail.commentID;
+            return RedirectToAction("Index");
+        }
     }
 }

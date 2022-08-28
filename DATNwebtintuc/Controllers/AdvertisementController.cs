@@ -54,6 +54,7 @@ namespace DATNwebtintuc.Controllers
                 var entityadvertisment = new Advertisement();
                 entityadvertisment.linkAdvertisement = item.linkAdvertisement;
                 entityadvertisment.typeAdvertisement = item.typeAdvertisement;
+                entityadvertisment.urlAdvertisment = item.urlAdvertisment;
                 data.Advertisements.Add(entityadvertisment);
                 data.SaveChanges();
                 return RedirectToAction("Index", new { create = true });
@@ -88,6 +89,7 @@ namespace DATNwebtintuc.Controllers
                 entityadvertisment.idAdvertisement = item.idAdvertisement;
                 entityadvertisment.linkAdvertisement = item.linkAdvertisement;
                 entityadvertisment.typeAdvertisement = item.typeAdvertisement;
+                entityadvertisment.urlAdvertisment = item.urlAdvertisment;
                 data.Entry(entityadvertisment).State = EntityState.Modified;
                 data.SaveChanges();
                 return RedirectToAction("Index", new { update = true });

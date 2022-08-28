@@ -198,5 +198,10 @@ namespace DATNwebtintuc.Controllers
             file.SaveAs(Server.MapPath(getfile));
             return getfile;
         }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

@@ -28,8 +28,9 @@
     @foreach (var item in gettinslide)
     {
     <div class="w3-content w3-section" style="position:relative">
-        <a href="/Post/Detail?id=@item.post_id"><img class="mySlides" src="@item.post_teaser" ></a>
+        <a href="/Post/Detail?id=@item.post_id"><img class="mySlides" src="@item.post_teaser"></a>
         <a href="/Post/Detail?id=@item.post_id" class="myTitle"><h1>"@item.post_title"</h1></a>
+      
     </div>
     }
 </div>
@@ -51,9 +52,7 @@
             <div class="chuduoianhcontent">
                 <a href="/Post/Detail?id=@gettinmoi[0].post_id">@gettinmoi[0].post_title</a>
             </div>
-            <div class="btn-content">
-                <a href="/Post/Detail?id=@gettinmoi[0]" class="btn btn-primary btn-sm" style="color:white">Xem thêm</a>
-            </div>
+        
         </div>
         }
     </div>
@@ -192,6 +191,7 @@
                         </div>
                     </div>
                 </div>
+
             }
         </div>
     </div>
@@ -264,7 +264,7 @@
 
 
         <div class="quangcao2">
-            <a href="ad"><img class="quangcao2link" src="@getimgadvertisment[1].linkAdvertisement" /></a>
+            <a href="@getimgadvertisment[1].urlAdvertisment"><img class="quangcao2link" src="@getimgadvertisment[1].linkAdvertisement" /></a>
         </div>
 
     </div>
@@ -334,7 +334,7 @@
         </div>
 
         <div class="quangcao3">
-            <a href="ds"><img class="quangcao3img" src="@getimgadvertisment[2].linkAdvertisement" /></a>
+            <a href="@getimgadvertisment[2].urlAdvertisment"><img class="quangcao3img" src="@getimgadvertisment[2].linkAdvertisement" /></a>
         </div>
     </div>
 </div>
@@ -582,7 +582,7 @@
         </div>
 
         <div class="quangcao4">
-            <a href="d"><img class="quangcao4link" src="@getimgadvertisment[3].linkAdvertisement" /></a>
+            <a href="@getimgadvertisment[3].urlAdvertisment"><img class="quangcao4link" src="@getimgadvertisment[3].linkAdvertisement" /></a>
         </div>
 
     </div>
@@ -655,7 +655,7 @@
         </div>
 
         <div class="quangcao4">
-            <a href="d"><img class="quangcao4link" src="@getimgadvertisment[4].linkAdvertisement" /></a>
+            <a href="@getimgadvertisment[4].urlAdvertisment"><img class="quangcao4link" src="@getimgadvertisment[4].linkAdvertisement" /></a>
         </div>
     </div>
 </div>

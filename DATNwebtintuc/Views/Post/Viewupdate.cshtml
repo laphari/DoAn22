@@ -43,7 +43,7 @@
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nhập hashtag bài viết" name="post_tag" value="@Model.post_tag">
         <br />
         <label for="formGroupExampleInput">Ảnh mô tả</label>
-        <input type="file" class="form-control" id="formGroupExampleInput" name="post_teaser"  id="FileUpload">
+        <input type="file" class="form-control" id="formGroupExampleInput" name="post_teaser" id="FileUpload">
         <input type="text" name="post_teaser" value="@Model.post_teaser" hidden readonly />
         <br />
         <label for="formGroupExampleInput">Review bài viết</label>
@@ -76,7 +76,7 @@
             }
             else
             {
-            <option value="" selected>-------Lựa chọn series-------</option>
+                <option value="" selected>-------Lựa chọn series-------</option>
             }
             @foreach (var item in @ViewData["selectseriesed"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
             {
@@ -87,17 +87,20 @@
         <label>Ưu tiên</label>
         <br />
         <select name="stickypost" class="form-control" disabled>
-            <option value="">-------Lựa chọn ưu tiên-------</option>       
+            <option value="">-------Lựa chọn ưu tiên-------</option>
             <option value="1" @(Model.stickypost == 1 ? "selected" : "")> Ưu tiên 1</option>
             <option value="2" @(Model.stickypost == 2 ? "selected" : "")> Ưu tiên 2</option>
             <option value="3" @(Model.stickypost == 3 ? "selected" : "")> Ưu tiên 3</option>
         </select>
         <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
-        <input type="datetime" class="form-control" id="formGroupExampleInput" name="create_date"  value="@Model.create_date" readonly>
+        <input type="datetime" class="form-control" id="formGroupExampleInput" name="create_date" value="@Model.create_date" readonly>
         <br />
         <label for="formGroupExampleInput">Ngày sửa</label>
         <input type="datetime-local" class="form-control" id="formGroupExampleInput" name="edit_date">
+        <br />
+        <label for="formGroupExampleInput">Tên tác giả</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nhập tiêu đề bài viết" name="AuthorName" value="@Session["username"]" readonly>
         <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Sửa</button>
     </div>
 </form>

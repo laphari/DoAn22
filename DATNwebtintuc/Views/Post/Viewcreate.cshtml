@@ -89,7 +89,7 @@
             <option value="" selected>-------Lựa chọn series-------</option>
             @foreach (var item in @ViewData["selectseries"] as List<DATNwebtintuc.Models.ModelEntity.Series>)
             {
-                
+
                 <option value="@item.seriesID">@item.seriesName</option>
             }
         </select>
@@ -106,7 +106,9 @@
         <br />
         <label for="formGroupExampleInput">Ngày tạo</label>
         <input type="datetime-local" class="form-control" id="formGroupExampleInput" name="create_date">
-
+        <br />
+        <label for="formGroupExampleInput">Tên tác giả</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nhập tiêu đề bài viết" name="AuthorName" value="@Session["username"]">
         <button type="submit" class="btn-danger" onclick="clickk()" style="margin-left:50%;margin-top:10px">Tạo</button>
     </div>
 </form>

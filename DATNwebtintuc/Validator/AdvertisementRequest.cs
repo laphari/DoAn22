@@ -12,6 +12,8 @@ namespace DATNwebtintuc.Validator
         public AdvertisementRequestValidator()
         {
             RuleFor(AdvertisementRequest => AdvertisementRequest.linkAdvertisement).NotNull().WithMessage("Please enter name Link Advertisment");
+            RuleFor(AdvertisementRequest => AdvertisementRequest.urlAdvertisment).NotNull().WithMessage("Please enter name Url Advertisment");
+
         }
     }
 }

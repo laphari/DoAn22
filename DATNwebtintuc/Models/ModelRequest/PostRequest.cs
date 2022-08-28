@@ -19,6 +19,7 @@ namespace DATNwebtintuc.Models.ModelRequest
         public DateTime edit_date { get; set; }// ngay sua
         public string IDcategory { get; set; }
         public int? stickypost { get; set; }
+        public string AuthorName { get; set; }
 
     }
 }
